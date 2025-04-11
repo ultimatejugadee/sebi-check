@@ -26,9 +26,20 @@
         header {
             background-color: var(--primary-color);
             color: var(--white);
-            padding: 1.5rem;
+            padding: 1rem;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        header img {
+            height: 50px;
+            display: block;
+            margin: 0 auto 5px auto;
+        }
+
+        header .header-text {
+            font-size: 1.2rem;
+            font-weight: bold;
         }
         
         main {
@@ -84,14 +95,6 @@
             color: var(--primary-color);
         }
         
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-            padding: 1rem;
-            margin-top: auto;
-        }
-        
         @media (max-width: 600px) {
             .language-container {
                 grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -110,59 +113,4 @@
 </head>
 <body>
     <header>
-        <h1>Welcome</h1>
-    </header>
-    
-    <main>
-        <h2>Please Select Your Preferred Language</h2>
-        <div id="loading" class="loading">Loading languages...</div>
-        <div id="language-container" class="language-container"></div>
-    </main>
-    
-    <footer>
-        <p>&copy; 2023 Language Selection System</p>
-    </footer>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Fetch the XML file
-            fetch('lang_list.xml')
-                .then(response => response.text())
-                .then(data => {
-                    const parser = new DOMParser();
-                    const xmlDoc = parser.parseFromString(data, "text/xml");
-                    const languages = xmlDoc.getElementsByTagName("language");
-                    const container = document.getElementById('language-container');
-                    const loading = document.getElementById('loading');
-                    
-                    // Hide loading message
-                    loading.style.display = 'none';
-                    
-                    // Create buttons for each language
-                    for (let i = 0; i < languages.length; i++) {
-                        const langId = languages[i].getAttribute('id');
-                        const langName = languages[i].textContent;
-                        
-                        const button = document.createElement('button');
-                        button.className = 'language-btn';
-                        button.textContent = langName;
-                        button.setAttribute('data-lang-id', langId);
-                        
-                        button.addEventListener('click', function() {
-                            // Set the preferred language in localStorage
-                            localStorage.setItem('preferredLanguage', langId);
-                            // Redirect to sebi_check.html
-                            window.location.href = 'sebi_check.html';
-                        });
-                        
-                        container.appendChild(button);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error loading language list:', error);
-                    document.getElementById('loading').textContent = 'Error loading languages. Please try again later.';
-                });
-        });
-    </script>
-</body>
-</html>
+        <img src="
