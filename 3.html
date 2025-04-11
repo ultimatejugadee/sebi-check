@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout 3: Full-Width Sections (Blue Theme)</title>
+    <style>
+        body, h1, h2, p {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.7;
+            color: #333;
+             /* Base background - can be plain or patterned */
+             background-color: #fff;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #08317c; /* Base Blue */
+            color: #ffffff;
+            padding: 1.5rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: normal;
+        }
+
+        /* Section Styles */
+        .content-section {
+            padding: 4rem 2rem; /* Generous padding */
+            text-align: center;
+        }
+
+        .content-section .container {
+             max-width: 900px;
+             margin: 0 auto; /* Center content within the section */
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #08317c; /* Blue headings */
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            max-width: 700px; /* Limit paragraph width for readability */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Alternating Backgrounds & Patterns */
+        .section-a {
+            background-color: #f8fafd; /* Very light blue/grey */
+        }
+
+        .section-b {
+            background-color: #eaf0f6; /* Slightly darker shade */
+             /* Add a subtle Indian-inspired pattern here */
+             background-image: url('https://www.transparenttextures.com/patterns/arabesque.png');
+             background-repeat: repeat;
+             color: #222; /* Darker text for contrast */
+        }
+         .section-b h2 {
+             color: #062a69; /* Slightly darker blue */
+         }
+
+
+        .section-c {
+            background-color: #ffffff;
+        }
+
+        /* Call to Action variation */
+        .cta-section {
+             background-color: #062a69; /* Darker shade of base blue */
+             color: #ffffff;
+             padding: 3rem 2rem;
+        }
+        .cta-section h2 {
+            color: #ffffff;
+        }
+         .cta-button {
+             display: inline-block;
+             background-color: #ffc107; /* Accent color - yellow/gold */
+             color: #333;
+             padding: 0.8rem 1.5rem;
+             text-decoration: none;
+             border-radius: 5px;
+             font-weight: bold;
+             transition: background-color 0.3s ease;
+         }
+         .cta-button:hover {
+            background-color: #ffca2c;
+         }
+
+
+        /* Footer Styles */
+        .footer {
+            background-color: #08317c; /* Base Blue */
+            color: #ffffff;
+            text-align: center;
+            padding: 1.5rem 1rem; /* Slightly more padding */
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .content-section {
+                 padding: 2.5rem 1rem;
+            }
+             .content-section h2 {
+                 font-size: 1.5rem;
+             }
+             .content-section p {
+                font-size: 1rem;
+             }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Website Title - Layout 3</h1>
+        <p>Full-Width Sectional Layout</p>
+    </header>
+
+    <main>
+        <section class="content-section section-a">
+            <div class="container">
+                <h2>Discover Our Story</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod.</p>
+                <p>Nulla quis lorem ut libero malesuada feugiat. Curabitur aliquet quam id dui posuere blandit.</p>
+            </div>
+        </section>
+
+        <section class="content-section section-b">
+            <div class="container">
+                <h2>Our Services</h2>
+                <p>Donec rutrum congue leo eget malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Sed porttitor lectus nibh. Vestibulum ac diam sit.</p>
+            </div>
+        </section>
+
+        <section class="content-section section-c">
+            <div class="container">
+                 <h2>Why Choose Us?</h2>
+                <p>Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+             </div>
+        </section>
+
+         <section class="content-section cta-section">
+            <div class="container">
+                 <h2>Ready to Start?</h2>
+                <p>Contact us today to learn more about how we can help you achieve your goals.</p>
+                <a href="#" class="cta-button">Get In Touch</a>
+             </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Your Company Name. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

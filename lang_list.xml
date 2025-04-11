@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<languages>
+    <language id="en">English</language>
+    <language id="hi">Hindi</language>
+    <language id="mr">Marathi</language>
+    <language id="gu">Gujarati</language>
+    <language id="ta">Tamil</language>
+    <language id="bn">Bengali</language>
+    <language id="te">Telugu</language>
+    <language id="kn">Kannada</language>
+</languages>

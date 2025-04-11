@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout 4: Grid Layout (Blue Theme)</title>
+    <style>
+        body, h1, h2, p, figure {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f9;
+            /* Another Indian-inspired texture - maybe more geometric */
+            background-image: url('https://www.transparenttextures.com/patterns/checkered-pattern.png');
+            background-repeat: repeat;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #08317c; /* Base Blue */
+            color: #ffffff;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem; /* Space below header */
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        /* Grid Container */
+        .grid-container {
+            display: grid;
+             /* Creates responsive columns: min 280px wide, max 1fr (takes up equal space) */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; /* Space between grid items */
+            max-width: 1200px;
+            margin: 0 auto; /* Center grid */
+            padding: 0 1rem; /* Padding on sides */
+        }
+
+        /* Grid Item Styling (e.g., Cards) */
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.97);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease-in-out;
+        }
+        .grid-item:hover {
+            transform: translateY(-5px); /* Slight lift effect on hover */
+        }
+
+        .grid-item h2 {
+            color: #08317c;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .grid-item p {
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-item img { /* Example for image within a card */
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #08317c; /* Base Blue */
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 3rem; /* Space above footer */
+        }
+
+        /* Responsive Adjustments (Grid handles most of it via auto-fit) */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            .grid-container {
+                gap: 1rem;
+            }
+            .grid-item {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Website Title - Layout 4</h1>
+        <p>Responsive Grid Layout</p>
+    </header>
+
+    <main class="grid-container">
+        <article class="grid-item">
+             <figure>
+                 <img src="https://via.placeholder.com/400x200/08317c/ffffff?text=Feature+1" alt="Placeholder Image 1">
+             </figure>
+             <h2>Feature Card 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+            <a href="#" style="color: #08317c;">Learn More</a>
+        </article>
+
+        <article class="grid-item">
+            <h2>Informational Card 2</h2>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+             <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p>
+             <a href="#" style="color: #08317c;">Read Details</a>
+        </article>
+
+        <article class="grid-item">
+             <figure>
+                 <img src="https://via.placeholder.com/400x200/4a90e2/ffffff?text=Feature+3" alt="Placeholder Image 3">
+             </figure>
+            <h2>Product Card 3</h2>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+             <a href="#" style="color: #08317c;">View Product</a>
+        </article>
+
+         <article class="grid-item">
+            <h2>Service Overview 4</h2>
+            <p>Curabitur aliquet quam id dui posuere blandit. Donec sollicitudin molestie malesuada. Vivamus suscipit tortor.</p>
+            <a href="#" style="color: #08317c;">Explore Service</a>
+        </article>
+
+         <article class="grid-item">
+            <h2>News Update 5</h2>
+            <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Cras ultricies ligula sed magna dictum porta.</p>
+            <a href="#" style="color: #08317c;">Full Story</a>
+        </article>
+
+         <article class="grid-item">
+             <figure>
+                 <img src="https://via.placeholder.com/400x200/062a69/ffffff?text=Feature+6" alt="Placeholder Image 6">
+             </figure>
+            <h2>Highlight Card 6</h2>
+            <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem ipsum dolor sit amet.</p>
+             <a href="#" style="color: #08317c;">Discover</a>
+        </article>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Your Company Name. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
