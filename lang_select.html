@@ -75,14 +75,21 @@
             padding: 1rem;
             font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s ease, opacity 0.5s ease; /* Added opacity transition */
             text-align: center;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(10px); /* Start slightly lower */
+        }
+
+        .language-btn.visible { /* State when button should be visible */
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .language-btn:hover {
             background-color: var(--primary-color);
             color: var(--white);
-            transform: translateY(-3px);
+            transform: translateY(-3px); /* Keep hover effect, ensure it overrides initial transform */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         
@@ -122,7 +129,8 @@
             }
         }
     </style>
-    <script src="scripts/redirection.js" defer></script>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+
 </head>
 <body>
     <header>
@@ -132,21 +140,15 @@
         <img src="https://dur682txgv28e.cloudfront.net/assets/images/sebi-logo-crop.png" alt="SEBI Logo" class="main-logo">
         <h2>CHECK</h2>
         <div id="loading" class="loading">Loading languages...</div>
+        <div class="container">
+            <div class="text"></div>
+        </div>
         <div id="language-container" class="language-container"></div>
     </main>
     
     <script>
-        // Shuffle array function
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('check_list.xml')  // Correctly fetches check_list.xml
+            fetch('check_list.xml')
                 .then(response => response.text())
                 .then(data => {
                     const parser = new DOMParser();
@@ -157,11 +159,8 @@
                     
                     loading.style.display = 'none';
                     
-                    // Shuffle the languages array
-                    const shuffledLanguages = shuffleArray([...languages]);
-                    
-                    // Create buttons for shuffled languages
-                    shuffledLanguages.forEach(lang => {
+                    // Create buttons in the same order as the XML file
+                    languages.forEach((lang, index) => {
                         const langId = lang.getAttribute('id');
                         const langName = lang.textContent;
                         
@@ -176,6 +175,11 @@
                         });
                         
                         container.appendChild(button);
+
+                        // Add delay for appearance animation
+                        setTimeout(() => {
+                            button.classList.add('visible');
+                        }, index * 200); // 200ms delay between each button
                     });
                 })
                 .catch(error => {
@@ -184,5 +188,7 @@
                 });
         });
     </script>
+    <!-- <script  src="js/script.js"></script> -->
+
 </body>
 </html>

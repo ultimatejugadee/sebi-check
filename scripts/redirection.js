@@ -3,19 +3,22 @@
  * If not, redirects to the language selection page
  */
 (function() {
-    // Check if we're on the language selection page (language selection page)
-    const isLanguageSelectionPage = window.location.pathname.endsWith('lang_select.html'); // Corrected check needed here
+    // Get the current page name from the URL
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // No need to check for language if we're already on the language selection page
+    if (currentPage === 'lang_select.html') {
+        return;
+    }
 
-    // If we're not on the language selection page, check for preferred language
-    if (!isLanguageSelectionPage) {
-        const preferredLanguage = localStorage.getItem('preferredLanguage');
-        
-        // If no preferred language is set, redirect to language selection page
-        if (!preferredLanguage) {
-            console.log('No preferred language found. Redirecting to language selection page.');
-            window.location.href = 'lang_select.html';
-        } else {
-            console.log('Preferred language found:', preferredLanguage);
-        }
+    // Check for preferred language
+    const preferredLanguage = localStorage.getItem('preferredLanguage');
+    
+    // If no preferred language is set, redirect to language selection page
+    if (!preferredLanguage) {
+        console.log('No preferred language found. Redirecting to language selection page.');
+        window.location.href = 'lang_select.html';
+    } else {
+        console.log('Preferred language found:', preferredLanguage);
     }
 })();
