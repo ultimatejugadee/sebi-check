@@ -60,25 +60,29 @@ class TextScramble {
 // Example
 // ——————————————————————————————————————————————————
 
-const phrases = [
-'Neo,',
-'sooner or later',
-'you\'re going to realize',
-'just as I did',
-'that there\'s a difference',
-'between knowing the path',
-'and walking the path'];
+        // Configure scramble text
+        document.addEventListener('DOMContentLoaded', function() {
+          const phrases = [
+              'Select your preferred language',
+              'अपनी पसंदीदा भाषा चुनें',
+              'तुमची पसंतीची भाषा निवडा',
+              'તમારી પસંદગીની ભાષા પસંદ કરો',
+              'உங்கள் விருப்பமான மொழியைத் தேர்ந்தெடுக்கவும்',
+              'আপনার পছন্দের ভাষা নির্বাচন করুন',
+              'మీకు ఇష్టమైన భాషను ఎంచుకోండి',
+              'ನಿಮ್ಮ ಆದ್ಯತೆಯ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ'
+          ];
 
+          const el = document.querySelector('.text');
+          const fx = new TextScramble(el);
 
-const el = document.querySelector('.text');
-const fx = new TextScramble(el);
+          let counter = 0;
+          const next = () => {
+              fx.setText(phrases[counter]).then(() => {
+                  setTimeout(next, 2000); // Increased delay to 2 seconds
+              });
+              counter = (counter + 1) % phrases.length;
+          };
 
-let counter = 0;
-const next = () => {
-  fx.setText(phrases[counter]).then(() => {
-    setTimeout(next, 800);
-  });
-  counter = (counter + 1) % phrases.length;
-};
-
-next();
+          next();
+      });

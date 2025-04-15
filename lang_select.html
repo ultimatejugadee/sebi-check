@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Selection</title>
+    <link rel="stylesheet" href="css/scramble.css">
     <style>
         :root {
             --primary-color: #08317c;
@@ -12,15 +13,20 @@
             --hover-blue: #0a3d94;
         }
         
+        /* Override scramble.css defaults and set our theme */
+        html,
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: var(--light-blue);
             color: var(--primary-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
         
         header {
@@ -125,12 +131,31 @@
             }
             
             h2 {
-                font-size: 1.2rem;
+                font-size: 2rem;
             }
         }
+        
+        .scramble-container {
+            padding: 1rem;
+            text-align: center;
+            height: auto;
+            min-height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .text {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: inherit;
+        }
+        
+        .dud {
+            color: var(--hover-blue);
+        }
     </style>
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-
 </head>
 <body>
     <header>
@@ -138,11 +163,11 @@
     
     <main>
         <img src="https://dur682txgv28e.cloudfront.net/assets/images/sebi-logo-crop.png" alt="SEBI Logo" class="main-logo">
-        <h2>CHECK</h2>
-        <div id="loading" class="loading">Loading languages...</div>
-        <div class="container">
+        <!-- <h2>CHECK</h2> -->
+        <div class="scramble-container">
             <div class="text"></div>
         </div>
+        <div id="loading" class="loading">Loading languages...</div>
         <div id="language-container" class="language-container"></div>
     </main>
     
@@ -188,7 +213,6 @@
                 });
         });
     </script>
-    <!-- <script  src="js/script.js"></script> -->
-
+    <script src="scripts/scramble.js"></script>
 </body>
 </html>
