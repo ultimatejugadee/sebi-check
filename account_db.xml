@@ -6,7 +6,7 @@
 		<account_no>brk</account_no>
 		<registration_no>INZ000010231</registration_no>
 		<entity_name>5PAISA CAPITAL LIMITED</entity_name>
-		<upi_id>5paisacapital</upi_id>
+		<upi_id>5paisacapital.brk@validhdfc</upi_id>
 	</Entity>
 	<Entity>
 		<SR>2</SR>
@@ -14,6 +14,14 @@
 		<account_no>brk</account_no>
 		<registration_no>INB011326437</registration_no>
 		<entity_name>A C AGARWAL SHARE BROKERS PRIVATE LIMITED</entity_name>
-		<upi_id>acagarwal</upi_id>
+		<upi_id>acagarwal.brk@validhdfc</upi_id>
+	</Entity>
+		<Entity>
+		<SR>3</SR>
+		<ifsc>HDFCTEST</ifsc>
+		<account_no>brk</account_no>
+		<registration_no>INB000000000</registration_no>
+		<entity_name>Zerodha</entity_name>
+		<upi_id>zerodha.brk@payrighthdfc</upi_id>
 	</Entity>
 </Entities>
