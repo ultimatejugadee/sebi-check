@@ -36,7 +36,7 @@ class TextScramble {
     );
     
     // Set volume (reduced to 30% of original) and duration
-    gainNode.gain.setValueAtTime(0.002, this.audioCtx.currentTime); // Reduced from 0.015 to 0.003
+    gainNode.gain.setValueAtTime(0.003, this.audioCtx.currentTime); // Reduced from 0.015 to 0.003
     gainNode.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + 0.015); // Reduced from 0.001 to 0.0001
     
     // Play sound with shorter duration
