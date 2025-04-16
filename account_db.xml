@@ -2,26 +2,26 @@
 <Entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Entity>
 		<SR>1</SR>
-		<ifsc>C0028</ifsc>
-		<account_no>brk</account_no>
-		<registration_no>INZ000010231</registration_no>
-		<entity_name>5PAISA CAPITAL LIMITED</entity_name>
-		<upi_id>5paisacapital.brk@validhdfc</upi_id>
+		<ifsc>HDFC0000523</ifsc>
+		<account_no>57500000302007</account_no>
+		<registration_no>INZ000031633</registration_no>
+		<entity_name>Zerodha Broking LTD</entity_name>
+		<upi_id>zerodha.brk@validhdfc</upi_id>
 	</Entity>
 	<Entity>
 		<SR>2</SR>
-		<ifsc>C0557</ifsc>
-		<account_no>brk</account_no>
-		<registration_no>INB011326437</registration_no>
-		<entity_name>A C AGARWAL SHARE BROKERS PRIVATE LIMITED</entity_name>
-		<upi_id>acagarwal.brk@validhdfc</upi_id>
+		<ifsc>HDFC0000523</ifsc>
+		<account_no>57500000301668</account_no>
+		<registration_no>INZ000031633</registration_no>
+		<entity_name>Zerodha Broking LTD</entity_name>
+		<upi_id>zerodha121.brk@validhdfc</upi_id>
 	</Entity>
 		<Entity>
 		<SR>3</SR>
-		<ifsc>HDFCTEST</ifsc>
-		<account_no>brk</account_no>
-		<registration_no>INB000000000</registration_no>
-		<entity_name>Zerodha</entity_name>
-		<upi_id>zerodha.brk@payrighthdfc</upi_id>
+		<ifsc>HDFC0000523</ifsc>
+		<account_no>50200034994846</account_no>
+		<registration_no>INZ000031633</registration_no>
+		<entity_name>Zerodha Broking LTD</entity_name>
+		<upi_id>zerodha362.brk@validhdfc</upi_id>
 	</Entity>
 </Entities>

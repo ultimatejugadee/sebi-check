@@ -227,11 +227,24 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            updateLanguageDisplay();
+            // Get the preferred language from localStorage
+            const preferredLanguage = localStorage.getItem('preferredLanguage');
+
+            // Check if a language has been selected
+            if (!preferredLanguage) {
+                // If no language is found in localStorage, redirect to the selection page
+                console.log("No language preference found. Redirecting to language selection."); // Optional: for debugging
+                window.location.href = 'lang_select.html'; // Make sure this path is correct
+            } else {
+                // If a language preference exists, update the display
+                console.log(`Language preference found: ${preferredLanguage}. Updating display.`); // Optional: for debugging
+                updateLanguageDisplay(preferredLanguage); // Pass the language to the function
+            }
         });
 
-        function updateLanguageDisplay() {
-            const preferredLanguage = localStorage.getItem('preferredLanguage');
+        // Modified to accept preferredLanguage as an argument
+        function updateLanguageDisplay(preferredLanguage) {
+            // No need to get from localStorage again, it's passed as an argument
 
             fetch('check_list.xml') // Ensure this file exists and is accessible
                 .then(response => {
@@ -239,20 +252,21 @@
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
                     return response.text();
-                 })
+                   })
                 .then(data => {
                     const parser = new DOMParser();
                     const xmlDoc = parser.parseFromString(data, "text/xml");
                      const parserError = xmlDoc.querySelector("parsererror");
-                     if (parserError) {
-                         console.error('Error parsing XML:', parserError);
-                         throw new Error('Failed to parse language XML.');
-                     }
+                      if (parserError) {
+                           console.error('Error parsing XML:', parserError);
+                           throw new Error('Failed to parse language XML.');
+                      }
 
                     const languages = xmlDoc.getElementsByTagName("language");
                     let found = false;
                     for (let i = 0; i < languages.length; i++) {
                         const langId = languages[i].getAttribute('id');
+                        // Use the passed argument here
                         if (langId === preferredLanguage) {
                             document.getElementById('current-language').textContent = languages[i].textContent;
                             found = true;
@@ -260,24 +274,27 @@
                         }
                     }
                     if (!found) {
-                         const defaultLangElement = xmlDoc.querySelector("language[id='en']") || languages[0];
-                         document.getElementById('current-language').textContent = defaultLangElement ? defaultLangElement.textContent : 'English';
+                        // If the stored language code isn't in the XML, fallback gracefully
+                        console.warn(`Language code "${preferredLanguage}" not found in XML. Falling back.`);
+                         const defaultLangElement = xmlDoc.querySelector("language[id='en']") || languages[0]; // Default to 'en' or first lang
+                        document.getElementById('current-language').textContent = defaultLangElement ? defaultLangElement.textContent : getLangNameFromCode(preferredLanguage); // Use helper as final fallback
                     }
 
                 })
                 .catch(error => {
                     console.error('Error loading or parsing language list:', error);
-                    document.getElementById('current-language').textContent = preferredLanguage ? getLangNameFromCode(preferredLanguage) : 'English'; // Use a helper if needed
+                    // Fallback display using the known preferred language code if fetch fails
+                    document.getElementById('current-language').textContent = getLangNameFromCode(preferredLanguage);
                 });
         }
 
-        // Optional helper function
+        // Optional helper function (keep as is)
         function getLangNameFromCode(langCode) {
             const names = { 'en': 'English', 'hi': 'हिन्दी' }; // Add more known languages
             return names[langCode] || langCode || 'English'; // Fallback logic
         }
 
-
+        // Change language function (keep as is)
         function changeLanguage() {
             // Redirect to language selection page
             window.location.href = 'lang_select.html'; // Ensure this page exists
