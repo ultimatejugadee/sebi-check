@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEBI Check - Account Details Verification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- Reusing styles from previous pages --- */
+        :root {
+            --primary-color: #08317c;
+            --white: #ffffff;
+            --light-blue: #e6eeff;
+            --hover-blue: #0a3d94;
+            --text-secondary: #555;
+            --danger-color: #dc3545;
+            --success-color: #28a745;
+            --input-border-color: #ced4da;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-blue);
+            color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            z-index: 2;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 1rem auto 2rem auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .main-logo {
+            max-width: 150px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 1rem auto;
+        }
+
+        .main-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- Styles specific to account-check.html --- */
+        .account-input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            /* Increased gap for multiple inputs */
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            width: 100%;
+            max-width: 450px;
+            /* Adjust max width for the group */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            /* Align labels to the left */
+        }
+
+        .input-label {
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .input-field {
+            /* Common style for input fields */
+            width: 100%;
+            padding: 0.7rem 0.9rem;
+            font-size: 1rem;
+            border: 1px solid var(--input-border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(8, 49, 124, 0.2);
+        }
+
+        .check-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            padding: 0.8rem 2rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            /* Add some space above the button */
+        }
+
+        .check-button:hover {
+            background-color: var(--hover-blue);
+        }
+
+        .check-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* --- Reusing result styles --- */
+        #result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            background-color: var(--light-blue);
+            border: 1px solid #ccc;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #result p {
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .result-message {
+            font-weight: 500;
+        }
+
+        .error-message {
+            color: var(--danger-color);
+            font-weight: bold;
+        }
+
+        .success-message {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .detail-label {
+            /* For labels like "Name:", "UPI ID:" */
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .detail-value {
+            /* For the actual name/UPI */
+            font-weight: 500;
+            color: var(--primary-color);
+            word-break: break-all;
+            /* Prevent overflow */
+        }
+
+        #result.verified .detail-value {
+            /* Make values green when verified */
+            color: var(--success-color);
+        }
+
+        .copy-button-group {
+            /* Container for the two copy buttons */
+            display: flex;
+            flex-direction: column;
+            /* Stack buttons vertically */
+            gap: 0.8rem;
+            /* Space between copy buttons */
+            margin-top: 1.2rem;
+            align-items: center;
+            /* Center buttons */
+        }
+
+        .copy-button {
+            /* Style for individual copy buttons */
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            /* Slightly smaller font */
+            font-weight: 500;
+            transition: background-color 0.2s ease-in-out;
+            display: inline-flex;
+            /* Use inline-flex for icon alignment */
+            align-items: center;
+            gap: 0.4rem;
+            min-width: 180px;
+            /* Ensure buttons have a decent minimum width */
+            justify-content: center;
+            /* Center content within button */
+        }
+
+        .copy-button:hover {
+            background-color: var(--hover-blue);
+        }
+
+        .language-display {
+            font-size: 0.9rem;
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 2;
+        }
+
+        .language-display:hover {
+            background-color: #d0dfff;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: var(--primary-color);
+            animation: spin 1s ease infinite;
+            margin: 1rem auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 600px) {
+            main {
+                padding: 1rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+                 position: static;
+                 transform: none;
+                 order: 2;
+                 margin-top: 0.5rem;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+                justify-content: center; /* Center alignment for mobile */
+                min-height: 2rem;
+            }
+
+            .back-button {
+                position: absolute;
+                left: 1rem;
+                top: 1rem;
+                transform: none;
+            }
+
+            .language-display {
+                position: absolute;
+                right: 1rem;
+                top: 1rem;
+                transform: none;
+            }
+
+            .main-title {
+                font-size: 1.5rem;
+            }
+
+            .input-group {
+                max-width: 90%;
+            }
+
+            .check-button {
+                width: 80%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <button class="back-button" onclick="window.location.href='index.html'">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <div id="language-display" class="language-display" onclick="changeLanguage()">
+            Language: <span id="current-language">Loading...</span>
+        </div>
+    </header>
+
+    <main>
+        <img src="https://dur682txgv28e.cloudfront.net/assets/images/sebi-logo-crop.png" alt="SEBI Logo"
+            class="main-logo">
+        <h2 class="main-title">Account Details Verification</h2>
+
+        <div class="content">
+            <div class="account-input-container">
+                <div class="input-group">
+                    <label for="regNoInput" class="input-label">Registration Number:</label>
+                    <input type="text" id="regNoInput" class="input-field" placeholder="Enter Registration No.">
+                </div>
+                <div class="input-group">
+                    <label for="ifscInput" class="input-label">IFSC Code:</label>
+                    <input type="text" id="ifscInput" class="input-field" placeholder="Enter IFSC Code">
+                </div>
+                <div class="input-group">
+                    <label for="accNoInput" class="input-label">Account Number:</label>
+                    <input type="text" id="accNoInput" class="input-field" placeholder="Enter Account No.">
+                </div>
+
+                <button class="check-button" id="checkAccountButton">
+                    <i class="fas fa-user-check"></i> Check Account Details
+                </button>
+            </div>
+
+            <div id="result">
+                <p class="result-message">Enter all three details above and click "Check Account Details".</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // --- DOM Elements ---
+        const regNoInput = document.getElementById('regNoInput');
+        const ifscInput = document.getElementById('ifscInput');
+        const accNoInput = document.getElementById('accNoInput');
+        const checkAccountButton = document.getElementById('checkAccountButton');
+        const resultDiv = document.getElementById('result');
+
+        // --- Event Listeners ---
+        checkAccountButton.addEventListener('click', handleCheckAccountClick);
+
+        // --- Main Check Logic ---
+        function handleCheckAccountClick() {
+            const regNo = regNoInput.value.trim();
+            const ifsc = ifscInput.value.trim();
+            const accNo = accNoInput.value.trim();
+
+            resultDiv.innerHTML = ''; // Clear previous results
+            resultDiv.classList.remove('verified');
+
+            // Validation: Check if all fields are filled
+            if (!regNo || !ifsc || !accNo) {
+                resultDiv.innerHTML = '<p class="error-message">Please enter all three details: Registration Number, IFSC Code, and Account Number.</p>';
+                return;
+            }
+
+            // Disable button and show spinner
+            checkAccountButton.disabled = true;
+            resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Verifying account details...</p>';
+
+            verifyAccountDetails(regNo, ifsc, accNo);
+        }
+
+        // --- Account Verification ---
+        async function verifyAccountDetails(regNo, ifsc, accNo) {
+            try {
+                const response = await fetch('account_db.xml'); // Assuming XML is in the same directory
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch database: ${response.statusText}`);
+                }
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+                const parserError = xmlDoc.querySelector("parsererror");
+                if (parserError) {
+                    console.error('Error parsing XML:', parserError);
+                    throw new Error('Error reading the verification database.');
+                }
+
+                const entities = xmlDoc.getElementsByTagName('Entity');
+                let foundEntity = null;
+
+                for (let entity of entities) {
+                    const dbRegNo = entity.getElementsByTagName('registration_no')[0]?.textContent || '';
+                    const dbIfsc = entity.getElementsByTagName('ifsc')[0]?.textContent || '';
+                    const dbAccNo = entity.getElementsByTagName('account_no')[0]?.textContent || '';
+
+                    // Case-insensitive comparison for all fields
+                    if (dbRegNo.toLowerCase() === regNo.toLowerCase() &&
+                        dbIfsc.toLowerCase() === ifsc.toLowerCase() &&
+                        dbAccNo.toLowerCase() === accNo.toLowerCase()) {
+                        // Match found! Extract necessary details
+                        const entityName = entity.getElementsByTagName('entity_name')[0]?.textContent || 'N/A';
+                        const upiId = entity.getElementsByTagName('upi_id')[0]?.textContent || 'N/A';
+                        // Store the original case from DB for copying, if needed, or use input values
+                        foundEntity = {
+                            name: entityName,
+                            upiId: upiId,
+                            accountNo: dbAccNo, // Store the matched account number from DB
+                            ifsc: dbIfsc       // Store the matched IFSC from DB
+                        };
+                        break; // Exit loop once match is found
+                    }
+                }
+
+                displayAccountVerificationResult(foundEntity);
+
+            } catch (error) {
+                console.error('Error verifying account details:', error);
+                resultDiv.innerHTML = `<p class="error-message">Error verifying account details: ${error.message}. Please try again.</p>`;
+            } finally {
+                // Re-enable the button
+                checkAccountButton.disabled = false;
+            }
+        }
+
+        // --- Display Result ---
+        function displayAccountVerificationResult(entityData) {
+            resultDiv.innerHTML = ''; // Clear spinner/previous messages
+            if (entityData) {
+                // Verified - Match Found
+                resultDiv.classList.add('verified');
+                resultDiv.innerHTML = `
+                     <p class="success-message"><i class="fas fa-check-circle"></i> Account Details Verified</p>
+                     <p><span class="detail-label">Name:</span> <span class="detail-value">${entityData.name}</span></p>
+                     <p><span class="detail-label">UPI ID:</span> <span class="detail-value">${entityData.upiId}</span></p>
+                     <div class="copy-button-group">
+                         <button class="copy-button" id="copyAccButton"><i class="fas fa-copy"></i> Copy Account No.</button>
+                         <button class="copy-button" id="copyIfscButton"><i class="fas fa-copy"></i> Copy IFSC</button>
+                     </div>
+                 `;
+                // Add event listeners to the new copy buttons
+                document.getElementById('copyAccButton').addEventListener('click', () => copyToClipboard(entityData.accountNo, 'Account No.'));
+                document.getElementById('copyIfscButton').addEventListener('click', () => copyToClipboard(entityData.ifsc, 'IFSC'));
+
+            } else {
+                // Not found in database
+                resultDiv.classList.remove('verified');
+                resultDiv.innerHTML = `
+                     <p class="error-message"><i class="fas fa-times-circle"></i> No Match Found</p>
+                     <p>The provided account details (Registration No., IFSC, Account No.) did not match any verified records.</p>
+                 `;
+            }
+        }
+
+        // --- Utility Functions ---
+        function copyToClipboard(text, type = 'Text') {
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    // Provide feedback (could be more sophisticated, e.g., changing button text briefly)
+                    alert(`${type} copied to clipboard!`);
+                    console.log(`${type} copied: ${text}`);
+                })
+                .catch(err => {
+                    console.error(`Error copying ${type}:`, err);
+                    alert(`Failed to copy ${type}.`);
+                });
+        }
+
+        // --- Language Functions (Copied) ---
+        document.addEventListener('DOMContentLoaded', function () {
+            updateLanguageDisplay();
+            regNoInput.focus(); // Focus first input field on load
+        });
+
+        function updateLanguageDisplay() {
+            const preferredLanguage = localStorage.getItem('preferredLanguage');
+            fetch('check_list.xml') // Assuming XML is in the same directory
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                    return response.text();
+                })
+                .then(data => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(data, "text/xml");
+                    const parserError = xmlDoc.querySelector("parsererror");
+                    if (parserError) {
+                        console.error('Error parsing XML:', parserError);
+                        throw new Error('Failed to parse language XML.');
+                    }
+                    const languages = xmlDoc.getElementsByTagName("language");
+                    let found = false;
+                    for (let i = 0; i < languages.length; i++) {
+                        const langId = languages[i].getAttribute('id');
+                        if (langId === preferredLanguage) {
+                            document.getElementById('current-language').textContent = languages[i].textContent;
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        const defaultLangElement = xmlDoc.querySelector("language[id='en']") || languages[0];
+                        document.getElementById('current-language').textContent = defaultLangElement ? defaultLangElement.textContent : 'English';
+                        if (!preferredLanguage && defaultLangElement) {
+                            localStorage.setItem('preferredLanguage', defaultLangElement.getAttribute('id') || 'en');
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading or parsing language list:', error);
+                    document.getElementById('current-language').textContent = getLangNameFromCode(preferredLanguage || 'en');
+                });
+        }
+
+        function getLangNameFromCode(langCode) {
+            const names = { 'en': 'English', 'hi': 'हिन्दी' };
+            return names[langCode] || langCode || 'English';
+        }
+
+        function changeLanguage() {
+            window.location.href = 'lang_select.html'; // Assuming this page exists
+        }
+    </script>
+</body>
+
+</html>
