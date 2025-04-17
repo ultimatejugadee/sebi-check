@@ -41,13 +41,13 @@
             position: relative;
         }
 
-        header h1 { /* Removed style specifically for header H1 as it's not used */
+        header h1 {
              margin: 0;
              font-size: 1.8rem; /* Adjusted size */
              position: absolute; /* Center title */
              left: 50%;
              transform: translateX(-50%);
-        }
+         }
 
 
         .back-button {
@@ -77,12 +77,7 @@
             margin: 0 auto 1rem auto;
         }
 
-        .main-title { /* Added class for main page title */
-             text-align: center;
-             margin-bottom: 1.5rem;
-             font-size: 1.8rem;
-             font-weight: 600;
-        }
+        /* CHANGE 1: Removed .main-title CSS as element is removed */
 
         .content {
             background-color: var(--white);
@@ -91,15 +86,87 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
 
+         #result {
+             margin-bottom: 1.5rem; /* Changed from margin-top */
+             padding: 1.5rem;
+             border-radius: 8px;
+             text-align: center;
+             background-color: var(--light-blue);
+             border: 1px solid #ccc;
+             min-height: 60px; /* Adjusted initial height */
+             display: flex; /* Use flex for centering content */
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+         }
+
+         #result p {
+             margin: 0.5rem 0;
+             font-size: 1.1rem;
+         }
+
+         .result-message { /* General message styling */
+              font-weight: 500;
+         }
+
+         .error-message {
+             color: var(--danger-color);
+             font-weight: bold;
+         }
+
+         .success-message { /* For verified info */
+              color: var(--success-color);
+              font-weight: bold;
+          }
+
+         .upi-id-display { /* Specific style for UPI ID display */
+             font-family: monospace;
+             font-size: 1.2rem;
+             margin: 0.8rem 0;
+             font-weight: bold;
+             word-break: break-all; /* Prevent long UPIs from overflowing */
+         }
+
+
+         .result-button { /* General button style for results area */
+             background-color: var(--primary-color);
+             color: var(--white);
+             border: none;
+             border-radius: 6px;
+             padding: 0.8rem 1.5rem;
+             cursor: pointer;
+             margin-top: 1rem;
+             font-size: 1rem;
+             font-weight: 500;
+             transition: background-color 0.2s ease-in-out;
+         }
+
+         .result-button:hover {
+             background-color: var(--hover-blue);
+         }
+
+         .result-button i {
+             margin-right: 0.5rem;
+         }
+
+         /* Style for verified state */
+         #result.verified .upi-id-display {
+             color: var(--success-color);
+         }
+         #result.verified .entity-details {
+             color: var(--success-color);
+             font-weight: bold;
+         }
+
+
         .capture-container {
             text-align: center;
-            margin-bottom: 2rem;
         }
 
         #videoElement {
-            width: 100%;
-            max-width: 480px; /* Adjusted size */
-            margin: 0 auto 1rem auto; /* Added bottom margin */
+            width: 50%;
+            max-width: 240px;
+            margin: 0 auto 1rem auto;
             display: none;
             border-radius: 8px;
             border: 1px solid #ccc;
@@ -116,133 +183,61 @@
 
         .button-group {
             display: flex;
-            flex-direction: row; /* Changed to row */
+            flex-direction: row;
             gap: 1rem;
-            justify-content: center; /* Center buttons */
+            justify-content: center;
             margin: 1rem 0;
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            flex-wrap: wrap;
         }
 
         .action-button {
             background-color: var(--white);
             color: var(--primary-color);
-            border: 1px solid var(--primary-color); /* Added border */
+            border: 1px solid var(--primary-color);
             border-left: 5px solid var(--primary-color);
             border-radius: 8px;
-            padding: 1rem 1.5rem; /* Adjusted padding */
+            padding: 1rem 1.5rem;
             cursor: pointer;
             transition: all 0.2s ease-in-out;
             display: flex;
-            flex-direction: column; /* Keep column for icon + text */
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            gap: 0.5rem; /* Reduced gap */
+            gap: 0.5rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
-            width: 180px; /* Fixed width */
-            height: 120px; /* Fixed height */
-            box-sizing: border-box; /* Include padding and border in element's total width and height */
+            width: 180px;
+            height: 120px;
+            box-sizing: border-box;
+            font-weight: 500; /* CHANGE 2: Moved font-weight here for consistency */
         }
 
         .action-button:hover {
-            background-color: var(--hover-blue); /* Use hover color */
-            color: var (--white);
+            background-color: var(--hover-blue);
+            color: var (--white); /* Note: space might cause issues, should be var(--white) */
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(8, 49, 124, 0.1);
-            border-color: var(--hover-blue); /* Change border color on hover */
+            border-color: var(--hover-blue);
         }
 
         .action-button i {
-            font-size: 2.5em; /* Adjusted size */
+            font-size: 2.5em;
             margin-bottom: 0.3rem;
             color: inherit;
             transition: color 0.2s ease-in-out;
         }
 
         .action-button span {
-            font-size: 1em; /* Adjusted size */
+            font-size: 1em; /* Relative to parent .action-button */
             line-height: 1.3;
             color: inherit;
-            font-weight: 500;
+             /* CHANGE 2: Removed font-weight from here */
+            text-decoration: none; /* Ensure no underline on label */
         }
 
-        /* Hide the actual file input */
         #fileInput {
             display: none;
         }
-
-        #result {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            background-color: var(--light-blue);
-            border: 1px solid #ccc;
-            min-height: 100px; /* Give some initial height */
-            display: flex; /* Use flex for centering content */
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #result p {
-            margin: 0.5rem 0;
-            font-size: 1.1rem;
-        }
-
-        .result-message { /* General message styling */
-             font-weight: 500;
-        }
-
-        .error-message {
-            color: var(--danger-color);
-            font-weight: bold;
-        }
-
-        .success-message { /* For verified info */
-             color: var(--success-color);
-             font-weight: bold;
-        }
-
-        .upi-id-display { /* Specific style for UPI ID display */
-            font-family: monospace;
-            font-size: 1.2rem;
-            margin: 0.8rem 0;
-            font-weight: bold;
-            word-break: break-all; /* Prevent long UPIs from overflowing */
-        }
-
-
-        .result-button { /* General button style for results area */
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            border-radius: 6px;
-            padding: 0.8rem 1.5rem;
-            cursor: pointer;
-            margin-top: 1rem;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: background-color 0.2s ease-in-out;
-        }
-
-        .result-button:hover {
-            background-color: var(--hover-blue);
-        }
-
-        .result-button i {
-            margin-right: 0.5rem;
-        }
-
-         /* Style for verified state */
-        #result.verified .upi-id-display {
-            color: var(--success-color);
-        }
-        #result.verified .entity-details {
-            color: var(--success-color);
-            font-weight: bold;
-        }
-
 
         .language-display {
             font-size: 0.9rem;
@@ -252,14 +247,13 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            z-index: 2; /* Ensure it's above the title */
+            z-index: 2;
         }
 
         .language-display:hover {
-            background-color: #d0dfff; /* Lighter hover */
+            background-color: #d0dfff;
         }
 
-        /* Spinner for loading indication */
         .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             width: 36px;
@@ -267,7 +261,7 @@
             border-radius: 50%;
             border-left-color: var(--primary-color);
             animation: spin 1s ease infinite;
-            margin: 1rem auto; /* Center spinner */
+            margin: 1rem auto;
         }
 
         @keyframes spin {
@@ -276,59 +270,57 @@
         }
 
 
-        @media (max-width: 600px) { /* Adjust breakpoint */
+        @media (max-width: 600px) {
             header {
                 flex-direction: column;
                 gap: 1rem;
                 padding: 1rem;
-                justify-content: center; /* Center alignment for mobile */
+                justify-content: center;
                 min-height: 2rem;
-            } 
+            }
             .button-group {
-                 flex-direction: column; /* Stack buttons vertically on smaller screens */
+                 flex-direction: column;
                  align-items: center;
              }
              .action-button {
-                 width: 80%; /* Make buttons wider on smaller screens */
-                 max-width: 250px; /* But not too wide */
-                 height: auto; /* Adjust height automatically */
-                 padding: 1.2rem 1rem;
-             }
-             .action-button i {
-                 font-size: 2.8em;
-             }
-             .action-button span {
-                 font-size: 1.1em;
-             }
-             main {
-                 padding: 1rem;
-             }
-             .content {
-                 padding: 1.5rem;
-             }
-             header h1 {
-                 font-size: 1.5rem;
-                 position: static; /* Remove absolute positioning */
-                 transform: none;
-                 order: 2; /* Place title after buttons */
-                 margin-top: 0.5rem;
-             }
+                  width: 80%;
+                  max-width: 250px;
+                  height: auto;
+                  padding: 1.2rem 1rem;
+              }
+              .action-button i {
+                   font-size: 2.8em;
+               }
+               .action-button span {
+                   font-size: 1.1em;
+               }
+               main {
+                   padding: 1rem;
+               }
+               .content {
+                   padding: 1.5rem;
+               }
+               header h1 {
+                   font-size: 1.5rem;
+                   position: static;
+                   transform: none;
+                   order: 2;
+                   margin-top: 0.5rem;
+               }
 
-             .back-button {
-                 position: absolute; /* Keep back button top left */
-                 left: 1rem;
-                 top: 1rem;
-                 transform: none;
-             }
-             .language-display {
-                 position: absolute; /* Keep language top right */
-                 right: 1rem;
-                 top: 1rem;
-                 transform: none;
-             }
-             .main-title {
-                font-size: 1.5rem;
-            }
+               .back-button {
+                   position: absolute;
+                   left: 1rem;
+                   top: 1rem;
+                   transform: none;
+               }
+               .language-display {
+                   position: absolute;
+                   right: 1rem;
+                   top: 1rem;
+                   transform: none;
+               }
+               /* CHANGE 1: Removed .main-title media query */
         }
 
     </style>
@@ -338,40 +330,39 @@
         <button class="back-button" onclick="window.location.href='index.html'">
             <i class="fas fa-arrow-left"></i>
         </button>
-         <h1></h1> 
-         <div id="language-display" class="language-display" onclick="changeLanguage()">
-            Language: <span id="current-language">Loading...</span>
-        </div>
+         <h1></h1> <div id="language-display" class="language-display" onclick="changeLanguage()">
+             Language: <span id="current-language">Loading...</span>
+         </div>
     </header>
 
     <main>
         <img src="https://dur682txgv28e.cloudfront.net/assets/images/sebi-logo-crop.png" alt="SEBI Logo" class="main-logo">
-        <h2 class="main-title">Capture or Upload Image for UPI Verification</h2>
-
         <div class="content">
+
+            <div id="result">
+                <p class="result-message">Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.</p>
+            </div>
+
             <div class="capture-container">
                 <video id="videoElement" autoplay playsinline></video>
                 <img id="imagePreview" alt="Image Preview">
 
                 <div class="button-group" id="initialButtons">
                      <button class="action-button" id="startCameraButton">
-                        <i class="fas fa-camera"></i>
-                        <span>Use Camera</span>
-                    </button>
-                    <button class="action-button" id="captureImageButton" style="display: none;">
-                         <i class="fas fa-circle-camera"></i> <span>Capture Image</span>
+                         <i class="fas fa-camera"></i>
+                         <span>Use Camera</span>
                      </button>
+                     <button class="action-button" id="captureImageButton" style="display: none;">
+                          <i class="fas fa-circle-camera"></i> <span>Capture Image</span>
+                       </button>
                      <label class="action-button" for="fileInput" id="uploadButtonLabel">
-                        <i class="fas fa-upload"></i>
-                        <span>Upload Image</span>
-                    </label>
-                    <input type="file" id="fileInput" accept="image/*">
+                         <i class="fas fa-upload"></i>
+                         <span>Upload Image</span>
+                     </label>
+                     <input type="file" id="fileInput" accept="image/*">
                 </div>
             </div>
 
-            <div id="result">
-                <p class="result-message">Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.</p>
-            </div>
         </div>
     </main>
 
@@ -387,7 +378,9 @@
         const initialButtonsDiv = document.getElementById('initialButtons');
 
         let stream = null;
-        let currentUPI = null; // To store the UPI ID to be verified
+        let currentUPI = null;
+
+        // CHANGE 1: Removed toggleMainTitle function
 
         // --- Event Listeners ---
         startCameraButton.addEventListener('click', startCamera);
@@ -396,95 +389,101 @@
 
         // --- Camera Functions ---
         async function startCamera() {
-            resetUI(); // Reset UI before starting
+            resetUIBeforeAction();
             try {
+                // CHANGE 1: Removed toggleMainTitle call
                 stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
                 videoElement.srcObject = stream;
                 videoElement.style.display = 'block';
                 imagePreview.style.display = 'none';
-                startCameraButton.style.display = 'none'; // Hide start camera button
-                uploadButtonLabel.style.display = 'none'; // Hide upload button
-                captureImageButton.style.display = 'flex'; // Show capture button
+                startCameraButton.style.display = 'none';
+                uploadButtonLabel.style.display = 'none';
+                captureImageButton.style.display = 'flex';
                 resultDiv.innerHTML = '<p class="result-message">Point camera at the QR code / UPI ID and capture.</p>';
             } catch (err) {
+                // CHANGE 1: Removed toggleMainTitle call
                 console.error('Error accessing camera:', err);
                 resultDiv.innerHTML = '<p class="error-message">Could not access camera. Please ensure permissions are granted and try again.</p>';
-                showInitialButtons(); // Show buttons again on error
+                showInitialButtons();
             }
         }
 
         function captureImage() {
             if (!stream || videoElement.readyState !== videoElement.HAVE_ENOUGH_DATA) {
                  resultDiv.innerHTML = '<p class="error-message">Camera not ready. Please try again.</p>';
-                 stopCamera(); // Attempt to stop if stream exists
+                 stopCamera();
                  showInitialButtons();
                  return;
-             }
+               }
             const canvas = document.createElement('canvas');
             canvas.width = videoElement.videoWidth;
             canvas.height = videoElement.videoHeight;
             canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-            stopCamera(); // Stop camera after capture
+            stopCamera();
 
-            const imageDataUrl = canvas.toDataURL('image/png'); // Use PNG for potentially better OCR
+            const imageDataUrl = canvas.toDataURL('image/png');
             imagePreview.src = imageDataUrl;
             imagePreview.style.display = 'block';
             videoElement.style.display = 'none';
-            captureImageButton.style.display = 'none'; // Hide capture button
+            captureImageButton.style.display = 'none';
+            initialButtonsDiv.style.display = 'none';
 
-            resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Processing image...</p>'; // Show spinner
-            processImage(canvas); // Process the captured image directly via canvas
+            resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Processing image...</p>';
+            processImage(canvas);
         }
 
         function stopCamera() {
             if (stream) {
                 stream.getTracks().forEach(track => track.stop());
                 stream = null;
-                videoElement.srcObject = null; // Clear video source
+                videoElement.srcObject = null;
             }
-            videoElement.style.display = 'none'; // Ensure video is hidden
+            videoElement.style.display = 'none';
         }
 
         // --- File Upload Function ---
         function handleFileUpload(event) {
             const file = event.target.files[0];
             if (file) {
-                resetUI(); // Reset UI
+                resetUIBeforeAction();
+                // CHANGE 1: Removed toggleMainTitle call
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     imagePreview.src = e.target.result;
-                    imagePreview.style.display = 'block'; // Show preview
-                    videoElement.style.display = 'none'; // Hide video element
-                    resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Processing image...</p>'; // Show spinner
+                    imagePreview.style.display = 'block';
+                    videoElement.style.display = 'none';
+                    initialButtonsDiv.style.display = 'none';
 
-                    // Create an image element to process
+                    resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Processing image...</p>';
+
                     const img = new Image();
                     img.onload = () => {
                          const canvas = document.createElement('canvas');
                          canvas.width = img.naturalWidth;
                          canvas.height = img.naturalHeight;
                          canvas.getContext('2d').drawImage(img, 0, 0);
-                         processImage(canvas); // Process the uploaded image
-                    };
+                         processImage(canvas);
+                     };
                     img.onerror = () => {
-                        resultDiv.innerHTML = '<p class="error-message">Error loading image file.</p>';
-                        showInitialButtons();
-                    };
+                         resultDiv.innerHTML = '<p class="error-message">Error loading image file.</p>';
+                         showInitialButtons();
+                         // CHANGE 1: Removed toggleMainTitle call
+                     };
                     img.src = e.target.result;
                 }
                 reader.onerror = () => {
-                    resultDiv.innerHTML = '<p class="error-message">Error reading file.</p>';
-                     showInitialButtons();
-                };
+                     resultDiv.innerHTML = '<p class="error-message">Error reading file.</p>';
+                      showInitialButtons();
+                      // CHANGE 1: Removed toggleMainTitle call
+                 };
                 reader.readAsDataURL(file);
             }
-             // Reset file input value so the same file can be selected again
              event.target.value = null;
         }
 
         // --- Image Processing ---
         async function processImage(canvas) {
-            currentUPI = null; // Reset current UPI
+            currentUPI = null;
             resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Scanning QR Code...</p>';
 
             let qrUpiId = '';
@@ -495,21 +494,14 @@
             // 1. Detect QR Code
             try {
                 const imageData = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
-                // Use jsQR options for better detection if needed
                 const code = jsQR(imageData.data, imageData.width, imageData.height, {
-                    inversionAttempts: "dontInvert", // Or "attemptBoth" if needed
+                    inversionAttempts: "dontInvert",
                 });
 
                 if (code) {
-                    // NOTE: jsQR returns only the *first* QR code found.
-                    // The requirement "multiple QR codes" cannot be directly checked with jsQR standard usage.
-                    // We'll proceed assuming jsQR gives us at most one result.
-                    // If advanced multi-detection is needed, a different library or approach is required.
                     qrUpiId = extractUPIFromQRData(code.data);
                     if (!qrUpiId) {
-                       // QR found, but not a valid UPI format we recognize
-                       console.log("QR code found, but doesn't contain expected UPI data:", code.data);
-                       // We won't set an error here, just proceed to OCR
+                        console.log("QR code found, but doesn't contain expected UPI data:", code.data);
                     }
                 } else {
                     console.log("No QR code detected.");
@@ -524,17 +516,11 @@
             resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Reading text (OCR)...</p>';
             try {
                 const { data: { text } } = await Tesseract.recognize(
-                    canvas,
-                    'eng', // Language - English
-                    { logger: m => console.log(m) } // Optional logger
+                    canvas, 'eng', { logger: m => console.log(m) }
                 );
 
-                // Extract potential UPI IDs using regex
-                const upiRegex = /[a-zA-Z0-9.\-_]+@[a-zA-Z0-9]+/g; // UPI ID format regex
+                const upiRegex = /[a-zA-Z0-9.\-_]+@[a-zA-Z0-9]+/g;
                 const potentialOcrUPIs = text.match(upiRegex) || [];
-
-                 // Filter out common false positives if needed (e.g., email addresses)
-                 // For simplicity, we assume any match is a potential UPI ID here.
 
                 if (potentialOcrUPIs.length > 1) {
                     ocrError = 'Multiple UPI IDs found in text. Please ensure only one is visible.';
@@ -542,7 +528,7 @@
                     ocrUpiId = potentialOcrUPIs[0];
                 } else {
                      console.log("No UPI ID found via OCR.");
-                }
+                 }
             } catch (err) {
                 console.error('Error during OCR:', err);
                 ocrError = 'Error during text recognition (OCR).';
@@ -551,79 +537,68 @@
 
             // 3. Process Results and Display
             displayProcessingResults(qrUpiId, ocrUpiId, qrError, ocrError);
+            // CHANGE 1: Removed toggleMainTitle call
 
         }
 
         // --- Helper Functions ---
         function extractUPIFromQRData(data) {
-            // Regex for upi://pay?pa=UPI_ID&...
             const match = data.match(/upi:\/\/pay\?pa=([^&]+)/);
-            if (match && match[1]) {
-                return match[1]; // Return the captured group (the UPI ID)
-            }
-            return null; // Return null if no match
+            return (match && match[1]) ? match[1] : null;
         }
 
 
         function displayProcessingResults(qrUpiId, ocrUpiId, qrError, ocrError) {
-             resultDiv.innerHTML = ''; // Clear spinner/previous messages
-             resultDiv.classList.remove('verified'); // Remove verified class if present
+             resultDiv.innerHTML = '';
+             resultDiv.classList.remove('verified');
 
-            // Handle critical errors first
-            if (qrError || ocrError) {
-                 let combinedError = [qrError, ocrError].filter(Boolean).join(' ');
-                 resultDiv.innerHTML = `<p class="error-message">${combinedError || 'An unknown error occurred during processing.'}</p>`;
-                 showInitialButtons(); // Show capture/upload again on error
-                 return;
-             }
-             if (!qrUpiId && !ocrUpiId) {
-                 resultDiv.innerHTML = '<p class="result-message">No UPI QR code or typed UPI ID detected in the image.</p>';
-                 showInitialButtons();
-                 return;
-             }
+             if (qrError || ocrError) {
+                  let combinedError = [qrError, ocrError].filter(Boolean).join(' ');
+                   resultDiv.innerHTML = `<p class="error-message">${combinedError || 'An unknown error occurred during processing.'}</p>`;
+                   showInitialButtons();
+                   return;
+              }
+              if (!qrUpiId && !ocrUpiId) {
+                   resultDiv.innerHTML = '<p class="result-message">No UPI QR code or typed UPI ID detected in the image.</p>';
+                   showInitialButtons();
+                   return;
+              }
 
-             // Logic based on requirements 3.3 & 3.4
              if (qrUpiId && ocrUpiId) {
-                 if (qrUpiId.toLowerCase() === ocrUpiId.toLowerCase()) {
-                     // Match: Show UPI and Check button (3.4 match)
-                     currentUPI = qrUpiId; // Store the matched UPI
-                     resultDiv.innerHTML = `
-                         <p class="result-message">UPI ID Found:</p>
-                         <p class="upi-id-display">${currentUPI}</p>
-                         <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> Check UPI ID</button>
-                     `;
-                     document.getElementById('checkUpiButton').addEventListener('click', () => verifyUPIWithDatabase(currentUPI));
-                 } else {
-                     // Mismatch: Show error (3.4 mismatch)
-                     resultDiv.innerHTML = `
-                         <p class="error-message">UPI ID Mismatch:</p>
-                         <p>QR Code: ${qrUpiId}</p>
-                         <p>Text: ${ocrUpiId}</p>
-                         <p>UPI ID in the QR code and Printed text do not match. Please try checking them separately.</p>
-                     `;
-                     showInitialButtons();
-                 }
+                  if (qrUpiId.toLowerCase() === ocrUpiId.toLowerCase()) {
+                       currentUPI = qrUpiId;
+                       resultDiv.innerHTML = `
+                           <p class="upi-id-display">${currentUPI}</p>
+                           <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> Check UPI ID</button>
+                       `;
+                       document.getElementById('checkUpiButton').addEventListener('click', () => verifyUPIWithDatabase(currentUPI));
+                       initialButtonsDiv.style.display = 'none';
+                   } else {
+                       resultDiv.innerHTML = `
+                           <p class="error-message">UPI ID Mismatch:</p>
+                           <p>QR Code: ${qrUpiId}</p>
+                           <p>Text: ${ocrUpiId}</p>
+                           <p>UPI ID in the QR code and Printed text do not match. Please try checking them separately.</p>
+                       `;
+                       showInitialButtons();
+                   }
              } else if (qrUpiId) {
-                 // Only QR found: Show UPI and Check button (3.3)
                  currentUPI = qrUpiId;
                  resultDiv.innerHTML = `
-                     <p class="result-message">UPI ID Found (QR Code):</p>
-                     <p class="upi-id-display">${currentUPI}</p>
-                     <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> Check UPI ID</button>
+                      <p class="upi-id-display">${currentUPI}</p>
+                      <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> Check UPI ID</button>
                  `;
                  document.getElementById('checkUpiButton').addEventListener('click', () => verifyUPIWithDatabase(currentUPI));
-             } else if (ocrUpiId) {
-                 // Only OCR found: Show UPI and Check button (3.3)
+                 initialButtonsDiv.style.display = 'none';
+              } else if (ocrUpiId) {
                  currentUPI = ocrUpiId;
                  resultDiv.innerHTML = `
-                     <p class="result-message">UPI ID Found (Text):</p>
-                     <p class="upi-id-display">${currentUPI}</p>
-                     <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> Check UPI ID</button>
+                      <p class="upi-id-display">${currentUPI}</p>
+                      <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> Check UPI ID</button>
                  `;
                  document.getElementById('checkUpiButton').addEventListener('click', () => verifyUPIWithDatabase(currentUPI));
-             }
-             // Only show initial buttons again if there was an error state defined above.
-             // If a UPI is found (match or single), the "Check UPI ID" button is shown instead.
+                 initialButtonsDiv.style.display = 'none';
+              }
         }
 
 
@@ -631,18 +606,17 @@
         async function verifyUPIWithDatabase(upiIdToCheck) {
              if (!upiIdToCheck) return;
 
-            resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Verifying UPI ID...</p>'; // Show spinner
+             resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Verifying UPI ID...</p>';
+             initialButtonsDiv.style.display = 'none';
 
              try {
                  const response = await fetch('account_db.xml');
-                 if (!response.ok) {
-                     throw new Error(`Failed to fetch database: ${response.statusText}`);
-                 }
+                 if (!response.ok) throw new Error(`Failed to fetch database: ${response.statusText}`);
+
                  const xmlText = await response.text();
                  const parser = new DOMParser();
                  const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
 
-                 // Check for XML parsing errors
                  const parserError = xmlDoc.querySelector("parsererror");
                  if (parserError) {
                      console.error('Error parsing XML:', parserError);
@@ -653,14 +627,13 @@
                  let foundEntity = null;
 
                  for (let entity of entities) {
-                    // Case-insensitive comparison for UPI ID
-                     const dbUpiIdElement = entity.getElementsByTagName('upi_id')[0];
-                     if (dbUpiIdElement && dbUpiIdElement.textContent.toLowerCase() === upiIdToCheck.toLowerCase()) {
-                         const entityName = entity.getElementsByTagName('entity_name')[0]?.textContent || 'N/A';
-                         const registrationNo = entity.getElementsByTagName('registration_no')[0]?.textContent || 'N/A';
-                         foundEntity = { name: entityName, regNo: registrationNo };
-                         break;
-                     }
+                      const dbUpiIdElement = entity.getElementsByTagName('upi_id')[0];
+                      if (dbUpiIdElement && dbUpiIdElement.textContent.toLowerCase() === upiIdToCheck.toLowerCase()) {
+                          const entityName = entity.getElementsByTagName('entity_name')[0]?.textContent || 'N/A';
+                          const registrationNo = entity.getElementsByTagName('registration_no')[0]?.textContent || 'N/A';
+                          foundEntity = { name: entityName, regNo: registrationNo };
+                          break;
+                      }
                  }
 
                  displayVerificationResult(upiIdToCheck, foundEntity);
@@ -668,41 +641,41 @@
              } catch (error) {
                  console.error('Error verifying UPI:', error);
                  resultDiv.innerHTML = `<p class="error-message">Error verifying UPI ID: ${error.message}. Please try again.</p>`;
-                 // Optionally, re-show the "Check UPI" button or initial buttons
-                 showInitialButtons(); // Revert to initial state on fetch/parse error
+                 showInitialButtons();
+                 // CHANGE 1: Removed toggleMainTitle call
              }
          }
 
         function displayVerificationResult(verifiedUpiId, entityData) {
-             resultDiv.innerHTML = ''; // Clear previous content
+             resultDiv.innerHTML = '';
              if (entityData) {
-                 // Verified (3.5 success)
-                 resultDiv.classList.add('verified'); // Add class for styling
+                 resultDiv.classList.add('verified');
                  resultDiv.innerHTML = `
                      <p class="success-message"><i class="fas fa-check-circle"></i> Verified UPI ID</p>
                      <p class="upi-id-display">${verifiedUpiId}</p>
                      <p class="entity-details">Name: ${entityData.name}</p>
                      <p class="entity-details">Reg. No: ${entityData.regNo}</p>
                      <button class="result-button" id="copyUpiButton"><i class="fas fa-copy"></i> Copy UPI to Make Payment</button>
+                     <button class="result-button" id="tryAgainButton"><i class="fas fa-redo"></i> Scan Another</button>
                  `;
                  document.getElementById('copyUpiButton').addEventListener('click', () => copyToClipboard(verifiedUpiId));
+                 document.getElementById('tryAgainButton').addEventListener('click', resetUI);
+                 initialButtonsDiv.style.display = 'none';
              } else {
-                 // Not found in database
                  resultDiv.classList.remove('verified');
                  resultDiv.innerHTML = `
                      <p class="error-message"><i class="fas fa-times-circle"></i> UPI ID Not Found</p>
                       <p class="upi-id-display">${verifiedUpiId}</p>
                      <p>This UPI ID was not found in the verified list.</p>
                  `;
-                 // Show initial buttons so user can try again
                   showInitialButtons();
              }
+             // CHANGE 1: Removed toggleMainTitle call
          }
 
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text)
                 .then(() => {
-                    // Optionally show a temporary confirmation message
                     const copyButton = document.getElementById('copyUpiButton');
                     if(copyButton) {
                         const originalText = copyButton.innerHTML;
@@ -711,38 +684,44 @@
                         setTimeout(() => {
                             copyButton.innerHTML = originalText;
                             copyButton.disabled = false;
-                        }, 2000); // Revert after 2 seconds
+                        }, 2000);
                     }
                  })
                 .catch(err => {
                     console.error('Error copying text:', err);
-                    alert('Failed to copy UPI ID.'); // Provide feedback
+                    alert('Failed to copy UPI ID.');
                 });
         }
 
         // --- UI Reset/Control Functions ---
-        function resetUI() {
-             stopCamera(); // Ensure camera is off
-             imagePreview.style.display = 'none'; // Hide preview
-             imagePreview.src = '#'; // Clear image source
-             videoElement.style.display = 'none'; // Hide video
-             resultDiv.innerHTML = '<p class="result-message">Please capture or upload an image.</p>'; // Reset result message
+        function resetUIBeforeAction() {
+             stopCamera();
+             imagePreview.style.display = 'none';
+             imagePreview.src = '#';
+             videoElement.style.display = 'none';
+             resultDiv.innerHTML = '';
              resultDiv.classList.remove('verified');
-             currentUPI = null; // Reset stored UPI
-             showInitialButtons(); // Ensure initial buttons are shown correctly
+             currentUPI = null;
         }
+
+        function resetUI() {
+              resetUIBeforeAction();
+              // CHANGE 1: Removed toggleMainTitle call
+              resultDiv.innerHTML = '<p class="result-message">Status will appear here. Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.</p>';
+              showInitialButtons();
+          }
 
         function showInitialButtons() {
-            startCameraButton.style.display = 'flex'; // Show start camera button
-            uploadButtonLabel.style.display = 'flex'; // Show upload button
-            captureImageButton.style.display = 'none'; // Hide capture button
-            initialButtonsDiv.style.display = 'flex'; // Ensure the group is visible
+            startCameraButton.style.display = 'flex';
+            uploadButtonLabel.style.display = 'flex';
+            captureImageButton.style.display = 'none';
+            initialButtonsDiv.style.display = 'flex';
         }
 
-        // --- Language Functions (Keep as is) ---
+        // --- Language Functions ---
         document.addEventListener('DOMContentLoaded', function() {
             updateLanguageDisplay();
-            resetUI(); // Initialize UI on load
+            resetUI();
         });
 
         function updateLanguageDisplay() {
@@ -773,9 +752,9 @@
                     if (!found) {
                         const defaultLangElement = xmlDoc.querySelector("language[id='en']") || languages[0];
                         document.getElementById('current-language').textContent = defaultLangElement ? defaultLangElement.textContent : 'English';
-                         if (!preferredLanguage && defaultLangElement) { // Set default if none exists
-                            localStorage.setItem('preferredLanguage', defaultLangElement.getAttribute('id') || 'en');
-                        }
+                         if (!preferredLanguage && defaultLangElement) {
+                             localStorage.setItem('preferredLanguage', defaultLangElement.getAttribute('id') || 'en');
+                         }
                     }
                 })
                 .catch(error => {
