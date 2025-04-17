@@ -309,19 +309,19 @@
 
     <main>
         <img src="https://dur682txgv28e.cloudfront.net/assets/images/sebi-logo-crop.png" alt="SEBI Logo" class="main-logo">
-        <h2 class="main-title">Manual UPI ID Verification</h2>
+        <h2 class="main-title" id="31">Manual UPI ID Verification</h2>
 
         <div class="content">
             <div class="manual-input-container">
                  <label for="upiInput" class="upi-input-label">Enter UPI ID:</label>
                  <input type="text" id="upiInput" placeholder="e.g., username@bankhandle">
                  <button class="check-button" id="checkUpiButton">
-                     <i class="fas fa-search"></i> Check UPI ID
+                     <i class="fas fa-search"></i> <div id="32">Check UPI ID</div>
                  </button>
             </div>
 
             <div id="result">
-                <p class="result-message">Enter a UPI ID above and click "Check UPI ID".</p>
+                <p class="result-message" id="33">Enter a UPI ID above and click "Check UPI ID".</p>
             </div>
         </div>
     </main>
@@ -350,18 +350,18 @@
 
             // Basic validation
             if (!upiIdToCheck) {
-                resultDiv.innerHTML = '<p class="error-message">Please enter a UPI ID.</p>';
+                resultDiv.innerHTML = '<p class="error-message" id="34">Please enter a UPI ID.</p>';
                 return;
             }
             // Simple regex to check for basic UPI format (allows more chars than needed, but catches common structure)
             if (!/^[a-zA-Z0-9.\-_@]+$/.test(upiIdToCheck) || !upiIdToCheck.includes('@')) {
-                 resultDiv.innerHTML = '<p class="error-message">Invalid UPI ID format. Please enter a valid ID (e.g., username@bankhandle).</p>';
+                 resultDiv.innerHTML = '<p class="error-message" id="35">Invalid UPI ID format. Please enter a valid ID (e.g., username@bankhandle).</p>';
                  return;
             }
 
             // Disable button and show spinner while checking
             checkUpiButton.disabled = true;
-            resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Verifying UPI ID...</p>';
+            resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message" id="36">Verifying UPI ID...</p>';
 
             verifyUPIWithDatabase(upiIdToCheck);
         }
