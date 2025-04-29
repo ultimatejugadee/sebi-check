@@ -39,6 +39,31 @@
     <text id="not-found-explanation">This UPI ID was not found in the verified list.</text>
     <text id="copied-text">Copied!</text>
     <text id="status-message">Status will appear here. Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.</text>
+    
+    <!-- Account check page translations -->
+    <text id="account-check-title">Account Details Verification</text>
+    <text id="reg-no-input-label">Registration Number:</text>
+    <text id="ifsc-input-label">IFSC Code:</text>
+    <text id="acc-no-input-label">Account Number:</text>
+    <text id="check-account-button-text">Check Account Details</text>
+    <text id="initial-instruction">Enter all three details above and click "Check Account Details".</text>
+    <text id="validation-error">Please enter all three details: Registration Number, IFSC Code, and Account Number.</text>
+    <text id="verifying-message">Verifying account details...</text>
+    <text id="account-verified-message">Account Details Verified</text>
+    <text id="name-label">Name:</text>
+    <text id="upi-id-label">UPI ID:</text>
+    <text id="copy-acc-text">Copy Account No.</text>
+    <text id="copy-ifsc-text">Copy IFSC</text>
+    <text id="no-match-message">No Match Found</text>
+    <text id="no-match-explanation">The provided account details (Registration No., IFSC, Account No.) did not match any verified records.</text>
+    
+    <!-- Manual check page translations - Adding missing items -->
+    <text id="manual-check-title">Manual UPI ID Verification</text>
+    <text id="upi-input-label">Enter UPI ID:</text>
+    <text id="check-upi-button-text">Check UPI ID</text>
+    <text id="manual-initial-instruction">Enter a UPI ID above and click "Check UPI ID".</text>
+    <text id="empty-upi-error">Please enter a UPI ID.</text>
+    <text id="invalid-format-error">Invalid UPI ID format. Please enter a valid ID (e.g., username@bankhandle).</text>
   </language>
   
   <language id="hi">
@@ -80,5 +105,30 @@
     <text id="not-found-explanation">यह UPI आईडी सत्यापित सूची में नहीं मिली।</text>
     <text id="copied-text">कॉपी किया गया!</text>
     <text id="status-message">स्थिति यहां दिखाई जाएगी। कृपया UPI QR कोड और/या टाइप की गई UPI आईडी वाली एक छवि कैप्चर या अपलोड करें।</text>
+    
+    <!-- Account check page translations -->
+    <text id="account-check-title">खाता विवरण सत्यापन</text>
+    <text id="reg-no-input-label">पंजीकरण संख्या:</text>
+    <text id="ifsc-input-label">IFSC कोड:</text>
+    <text id="acc-no-input-label">खाता संख्या:</text>
+    <text id="check-account-button-text">खाता विवरण जांचें</text>
+    <text id="initial-instruction">ऊपर तीनों विवरण दर्ज करें और "खाता विवरण जांचें" पर क्लिक करें।</text>
+    <text id="validation-error">कृपया तीनों विवरण दर्ज करें: पंजीकरण संख्या, IFSC कोड, और खाता संख्या।</text>
+    <text id="verifying-message">खाता विवरण सत्यापित किया जा रहा है...</text>
+    <text id="account-verified-message">खाता विवरण सत्यापित</text>
+    <text id="name-label">नाम:</text>
+    <text id="upi-id-label">UPI आईडी:</text>
+    <text id="copy-acc-text">खाता संख्या कॉपी करें</text>
+    <text id="copy-ifsc-text">IFSC कॉपी करें</text>
+    <text id="no-match-message">कोई मिलान नहीं मिला</text>
+    <text id="no-match-explanation">प्रदान किए गए खाता विवरण (पंजीकरण संख्या, IFSC, खाता संख्या) किसी भी सत्यापित रिकॉर्ड से मेल नहीं खाते।</text>
+    
+    <!-- Manual check page translations - Adding missing items -->
+    <text id="manual-check-title">मैनुअल UPI आईडी सत्यापन</text>
+    <text id="upi-input-label">UPI आईडी दर्ज करें:</text>
+    <text id="check-upi-button-text">UPI आईडी जांचें</text>
+    <text id="manual-initial-instruction">ऊपर UPI आईडी दर्ज करें और "UPI आईडी जांचें" पर क्लिक करें।</text>
+    <text id="empty-upi-error">कृपया UPI आईडी दर्ज करें।</text>
+    <text id="invalid-format-error">अमान्य UPI आईडी प्रारूप। कृपया एक वैध आईडी दर्ज करें (उदा., username@bankhandle)।</text>
   </language>
 </translations>
