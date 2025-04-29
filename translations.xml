@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+  <language id="en">
+    <text id="main-title">CHECK</text>
+    <text id="section-title-1">CHECK VERIFIED UPI ID</text>
+    <text id="photo-button">USING PHOTO</text>
+    <text id="type-button">TYPE</text>
+    <text id="section-title-2">CHECK ACCOUNT DETAILS</text>
+    <text id="account-check-button">FOR SAFER NEFT/RTGS TRANSFERS</text>
+    <text id="language-label">Language:</text>
+    <!-- Add more text elements for other pages as needed -->
+  </language>
+  <language id="hi">
+  <text id="main-title">जांचें</text>
+  <text id="section-title-1">सत्यापित यूपीआई आईडी जांचें</text>
+  <text id="photo-button">फोटो का उपयोग करके</text>
+  <text id="type-button">टाइप करें</text>
+  <text id="section-title-2">खाते का विवरण जांचें</text>
+  <text id="account-check-button">सुरक्षित NEFT/RTGS ट्रांसफर के लिए</text>
+  <text id="language-label">भाषा:</text>
+  </language>
+  <!-- Additional languages can be added here later -->
+</translations>
