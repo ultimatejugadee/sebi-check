@@ -350,18 +350,18 @@
 
             // Basic validation
             if (!upiIdToCheck) {
-                resultDiv.innerHTML = '<p class="error-message" id="empty-upi-error">Please enter a UPI ID.</p>';
+                resultDiv.innerHTML = `<p class="error-message" id="empty-upi-error">${getTranslatedText('empty-upi-error', 'Please enter a UPI ID.')}</p>`;
                 return;
             }
             // Simple regex to check for basic UPI format
             if (!/^[a-zA-Z0-9.\-_@]+$/.test(upiIdToCheck) || !upiIdToCheck.includes('@')) {
-                 resultDiv.innerHTML = '<p class="error-message" id="invalid-format-error">Invalid UPI ID format. Please enter a valid ID (e.g., username@bankhandle).</p>';
+                 resultDiv.innerHTML = `<p class="error-message" id="invalid-format-error">${getTranslatedText('invalid-format-error', 'Invalid UPI ID format. Please enter a valid ID (e.g., username@bankhandle).')}</p>`;
                  return;
             }
 
             // Disable button and show spinner while checking
             checkUpiButton.disabled = true;
-            resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message" id="verifying-upi-message">Verifying UPI ID...</p>';
+            resultDiv.innerHTML = `<div class="spinner"></div><p class="result-message" id="verifying-upi-message">${getTranslatedText('verifying-upi-message', 'Verifying UPI ID...')}</p>`;
 
             verifyUPIWithDatabase(upiIdToCheck);
         }
@@ -402,7 +402,7 @@
 
              } catch (error) {
                  console.error('Error verifying UPI:', error);
-                 resultDiv.innerHTML = `<p class="error-message">Error verifying UPI ID: ${error.message}. Please try again.</p>`;
+                 resultDiv.innerHTML = `<p class="error-message">${getTranslatedText('verification-error', 'Error verifying UPI ID')}: ${error.message}. ${getTranslatedText('try-again', 'Please try again.')}</p>`;
              } finally {
                  // Re-enable the button regardless of success or failure
                  checkUpiButton.disabled = false;
@@ -416,11 +416,11 @@
                  // Verified
                  resultDiv.classList.add('verified');
                  resultDiv.innerHTML = `
-                     <p class="success-message"><i class="fas fa-check-circle"></i> <span id="verified-upi-message">Verified UPI ID</span></p>
+                     <p class="success-message"><i class="fas fa-check-circle"></i> <span id="verified-upi-message">${getTranslatedText('verified-upi-message', 'Verified UPI ID')}</span></p>
                      <p class="upi-id-display">${verifiedUpiId}</p>
-                     <p class="entity-details"><span id="name-label">Name:</span> ${entityData.name}</p>
-                     <p class="entity-details"><span id="reg-no-label">Reg. No:</span> ${entityData.regNo}</p>
-                     <button class="result-button" id="copyUpiButton"><i class="fas fa-copy"></i> <span id="copy-upi-text">Copy UPI to Make Payment</span></button>
+                     <p class="entity-details"><span id="name-label">${getTranslatedText('name-label', 'Name:')}</span> ${entityData.name}</p>
+                     <p class="entity-details"><span id="reg-no-label">${getTranslatedText('reg-no-label', 'Reg. No:')}</span> ${entityData.regNo}</p>
+                     <button class="result-button" id="copyUpiButton"><i class="fas fa-copy"></i> <span id="copy-upi-text">${getTranslatedText('copy-upi-text', 'Copy UPI to Make Payment')}</span></button>
                  `;
                  // Add event listener to the newly created button
                  document.getElementById('copyUpiButton').addEventListener('click', () => copyToClipboard(verifiedUpiId));
@@ -428,9 +428,9 @@
                  // Not found in database
                  resultDiv.classList.remove('verified');
                  resultDiv.innerHTML = `
-                     <p class="error-message"><i class="fas fa-times-circle"></i> <span id="upi-not-found-message">UPI ID Not Found</span></p>
+                     <p class="error-message"><i class="fas fa-times-circle"></i> <span id="upi-not-found-message">${getTranslatedText('upi-not-found-message', 'UPI ID Not Found')}</span></p>
                       <p class="upi-id-display">${verifiedUpiId}</p>
-                     <p id="not-found-explanation">This UPI ID was not found in the verified list.</p>
+                     <p id="not-found-explanation">${getTranslatedText('not-found-explanation', 'This UPI ID was not found in the verified list.')}</p>
                  `;
              }
          }
@@ -441,7 +441,7 @@
                     const copyButton = document.getElementById('copyUpiButton');
                     if(copyButton) {
                         const originalText = copyButton.innerHTML;
-                        copyButton.innerHTML = '<i class="fas fa-check"></i> <span id="copied-text">Copied!</span>';
+                        copyButton.innerHTML = `<i class="fas fa-check"></i> <span id="copied-text">${getTranslatedText('copied-text', 'Copied!')}</span>`;
                         copyButton.disabled = true; // Temporarily disable after copying
                         setTimeout(() => {
                             copyButton.innerHTML = originalText;
@@ -451,7 +451,7 @@
                 })
                 .catch(err => {
                     console.error('Error copying text:', err);
-                    alert('Failed to copy UPI ID.');
+                    alert(getTranslatedText('copy-error', 'Failed to copy UPI ID.'));
                 });
         }
 
