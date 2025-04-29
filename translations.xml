@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
   <language id="en">
+    <!-- Index page translations -->
     <text id="main-title">CHECK</text>
     <text id="section-title-1">CHECK VERIFIED UPI ID</text>
     <text id="photo-button">USING PHOTO</text>
@@ -8,16 +9,76 @@
     <text id="section-title-2">CHECK ACCOUNT DETAILS</text>
     <text id="account-check-button">FOR SAFER NEFT/RTGS TRANSFERS</text>
     <text id="language-label">Language:</text>
-    <!-- Add more text elements for other pages as needed -->
+    
+    <!-- Capture page translations -->
+    <text id="initial-message">Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.</text>
+    <text id="camera-button-text">Use Camera</text>
+    <text id="capture-button-text">Capture Image</text>
+    <text id="upload-button-text">Upload Image</text>
+    <text id="camera-ready-message">Point camera at the QR code / UPI ID and capture.</text>
+    <text id="camera-error-message">Could not access camera. Please ensure permissions are granted and try again.</text>
+    <text id="camera-not-ready-message">Camera not ready. Please try again.</text>
+    <text id="processing-message">Processing image...</text>
+    <text id="scanning-qr-message">Scanning QR Code...</text>
+    <text id="ocr-message">Reading text (OCR)...</text>
+    <text id="multiple-upi-message">Multiple UPI IDs found in text. Please ensure only one is visible.</text>
+    <text id="unknown-error-message">An unknown error occurred during processing.</text>
+    <text id="no-upi-detected-message">No UPI QR code or typed UPI ID detected in the image.</text>
+    <text id="check-upi-text">Check UPI ID</text>
+    <text id="upi-mismatch-message">UPI ID Mismatch:</text>
+    <text id="qr-code-label">QR Code:</text>
+    <text id="text-label">Text:</text>
+    <text id="mismatch-explanation">UPI ID in the QR code and Printed text do not match. Please try checking them separately.</text>
+    <text id="verifying-upi-message">Verifying UPI ID...</text>
+    <text id="verified-upi-message">Verified UPI ID</text>
+    <text id="name-label">Name:</text>
+    <text id="reg-no-label">Reg. No:</text>
+    <text id="copy-upi-text">Copy UPI to Make Payment</text>
+    <text id="scan-another-text">Scan Another</text>
+    <text id="upi-not-found-message">UPI ID Not Found</text>
+    <text id="not-found-explanation">This UPI ID was not found in the verified list.</text>
+    <text id="copied-text">Copied!</text>
+    <text id="status-message">Status will appear here. Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.</text>
   </language>
+  
   <language id="hi">
-  <text id="main-title">जांचें</text>
-  <text id="section-title-1">सत्यापित यूपीआई आईडी जांचें</text>
-  <text id="photo-button">फोटो का उपयोग करके</text>
-  <text id="type-button">टाइप करें</text>
-  <text id="section-title-2">खाते का विवरण जांचें</text>
-  <text id="account-check-button">सुरक्षित NEFT/RTGS ट्रांसफर के लिए</text>
-  <text id="language-label">भाषा:</text>
+    <!-- Index page translations -->
+    <text id="main-title">जांचें</text>
+    <text id="section-title-1">सत्यापित यूपीआई आईडी जांचें</text>
+    <text id="photo-button">फोटो का उपयोग करके</text>
+    <text id="type-button">टाइप करें</text>
+    <text id="section-title-2">खाते का विवरण जांचें</text>
+    <text id="account-check-button">सुरक्षित NEFT/RTGS ट्रांसफर के लिए</text>
+    <text id="language-label">भाषा:</text>
+    
+    <!-- Capture page translations -->
+    <text id="initial-message">कृपया UPI QR कोड और/या टाइप की गई UPI आईडी वाली एक छवि कैप्चर या अपलोड करें।</text>
+    <text id="camera-button-text">कैमरा का उपयोग करें</text>
+    <text id="capture-button-text">छवि कैप्चर करें</text>
+    <text id="upload-button-text">छवि अपलोड करें</text>
+    <text id="camera-ready-message">QR कोड / UPI आईडी पर कैमरा निर्देशित करें और कैप्चर करें।</text>
+    <text id="camera-error-message">कैमरा एक्सेस नहीं किया जा सका। कृपया अनुमतियां दी गई हैं, यह सुनिश्चित करें और फिर से प्रयास करें।</text>
+    <text id="camera-not-ready-message">कैमरा तैयार नहीं है। कृपया पुनः प्रयास करें।</text>
+    <text id="processing-message">छवि को संसाधित किया जा रहा है...</text>
+    <text id="scanning-qr-message">QR कोड स्कैन किया जा रहा है...</text>
+    <text id="ocr-message">टेक्स्ट पढ़ा जा रहा है (OCR)...</text>
+    <text id="multiple-upi-message">टेक्स्ट में कई UPI आईडी मिली हैं। कृपया सुनिश्चित करें कि केवल एक दिखाई दे रही है।</text>
+    <text id="unknown-error-message">प्रक्रिया के दौरान एक अज्ञात त्रुटि हुई।</text>
+    <text id="no-upi-detected-message">छवि में कोई UPI QR कोड या टाइप की गई UPI आईडी नहीं मिली।</text>
+    <text id="check-upi-text">UPI आईडी जांचें</text>
+    <text id="upi-mismatch-message">UPI आईडी मेल नहीं खाती:</text>
+    <text id="qr-code-label">QR कोड:</text>
+    <text id="text-label">टेक्स्ट:</text>
+    <text id="mismatch-explanation">QR कोड और प्रिंटेड टेक्स्ट में UPI आईडी मेल नहीं खाती। कृपया इन्हें अलग-अलग जांचने का प्रयास करें।</text>
+    <text id="verifying-upi-message">UPI आईडी सत्यापित की जा रही है...</text>
+    <text id="verified-upi-message">सत्यापित UPI आईडी</text>
+    <text id="name-label">नाम:</text>
+    <text id="reg-no-label">पंजीकरण संख्या:</text>
+    <text id="copy-upi-text">भुगतान करने के लिए UPI कॉपी करें</text>
+    <text id="scan-another-text">दूसरा स्कैन करें</text>
+    <text id="upi-not-found-message">UPI आईडी नहीं मिली</text>
+    <text id="not-found-explanation">यह UPI आईडी सत्यापित सूची में नहीं मिली।</text>
+    <text id="copied-text">कॉपी किया गया!</text>
+    <text id="status-message">स्थिति यहां दिखाई जाएगी। कृपया UPI QR कोड और/या टाइप की गई UPI आईडी वाली एक छवि कैप्चर या अपलोड करें।</text>
   </language>
-  <!-- Additional languages can be added here later -->
 </translations>
