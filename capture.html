@@ -394,17 +394,17 @@
                 startCameraButton.style.display = 'none';
                 uploadButtonLabel.style.display = 'none';
                 captureImageButton.style.display = 'flex';
-                resultDiv.innerHTML = '<p id="camera-ready-message" class="result-message">Point camera at the QR code / UPI ID and capture.</p>';
+                resultDiv.innerHTML = `<p id="camera-ready-message" class="result-message">${getTranslatedText('camera-ready-message', 'Point camera at the QR code / UPI ID and capture.')}</p>`;
             } catch (err) {
                 console.error('Error accessing camera:', err);
-                resultDiv.innerHTML = '<p id="camera-error-message" class="error-message">Could not access camera. Please ensure permissions are granted and try again.</p>';
+                resultDiv.innerHTML = `<p id="camera-error-message" class="error-message">${getTranslatedText('camera-error-message', 'Could not access camera. Please ensure permissions are granted and try again.')}</p>`;
                 showInitialButtons();
             }
         }
 
         function captureImage() {
             if (!stream || videoElement.readyState !== videoElement.HAVE_ENOUGH_DATA) {
-                 resultDiv.innerHTML = '<p id="camera-not-ready-message" class="error-message">Camera not ready. Please try again.</p>';
+                 resultDiv.innerHTML = `<p id="camera-not-ready-message" class="error-message">${getTranslatedText('camera-not-ready-message', 'Camera not ready. Please try again.')}</p>`;
                  stopCamera();
                  showInitialButtons();
                  return;
@@ -422,7 +422,7 @@
             captureImageButton.style.display = 'none';
             initialButtonsDiv.style.display = 'none';
 
-            resultDiv.innerHTML = '<div class="spinner"></div><p id="processing-message" class="result-message">Processing image...</p>';
+            resultDiv.innerHTML = `<div class="spinner"></div><p id="processing-message" class="result-message">${getTranslatedText('processing-message', 'Processing image...')}</p>`;
             processImage(canvas);
         }
 
@@ -447,7 +447,7 @@
                     videoElement.style.display = 'none';
                     initialButtonsDiv.style.display = 'none';
 
-                    resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Processing image...</p>';
+                    resultDiv.innerHTML = `<div class="spinner"></div><p class="result-message">${getTranslatedText('processing-message', 'Processing image...')}</p>`;
 
                     const img = new Image();
                     img.onload = () => {
@@ -475,7 +475,7 @@
         // --- Image Processing ---
         async function processImage(canvas) {
             currentUPI = null;
-            resultDiv.innerHTML = '<div class="spinner"></div><p id="scanning-qr-message" class="result-message">Scanning QR Code...</p>';
+            resultDiv.innerHTML = `<div class="spinner"></div><p id="scanning-qr-message" class="result-message">${getTranslatedText('scanning-qr-message', 'Scanning QR Code...')}</p>`;
 
             let qrUpiId = '';
             let ocrUpiId = '';
@@ -504,7 +504,7 @@
 
 
             // 2. Perform OCR
-            resultDiv.innerHTML = '<div class="spinner"></div><p id="ocr-message" class="result-message">Reading text (OCR)...</p>';
+            resultDiv.innerHTML = `<div class="spinner"></div><p id="ocr-message" class="result-message">${getTranslatedText('ocr-message', 'Reading text (OCR)...')}</p>`;
             try {
                 const { data: { text } } = await Tesseract.recognize(
                     canvas, 'eng', { logger: m => console.log(m) }
@@ -544,12 +544,12 @@
 
              if (qrError || ocrError) {
                   let combinedError = [qrError, ocrError].filter(Boolean).join(' ');
-                   resultDiv.innerHTML = `<p class="error-message">${combinedError || '<span id="unknown-error-message">An unknown error occurred during processing.</span>'}</p>`;
+                   resultDiv.innerHTML = `<p class="error-message">${combinedError || getTranslatedText('unknown-error-message', 'An unknown error occurred during processing.')}</p>`;
                    showInitialButtons();
                    return;
               }
               if (!qrUpiId && !ocrUpiId) {
-                   resultDiv.innerHTML = '<p id="no-upi-detected-message" class="result-message">No UPI QR code or typed UPI ID detected in the image.</p>';
+                   resultDiv.innerHTML = `<p id="no-upi-detected-message" class="result-message">${getTranslatedText('no-upi-detected-message', 'No UPI QR code or typed UPI ID detected in the image.')}</p>`;
                    showInitialButtons();
                    return;
               }
@@ -559,16 +559,16 @@
                        currentUPI = qrUpiId;
                        resultDiv.innerHTML = `
                            <p class="upi-id-display">${currentUPI}</p>
-                           <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> <span id="check-upi-text">Check UPI ID</span></button>
+                           <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> <span id="check-upi-text">${getTranslatedText('check-upi-text', 'Check UPI ID')}</span></button>
                        `;
                        document.getElementById('checkUpiButton').addEventListener('click', () => verifyUPIWithDatabase(currentUPI));
                        initialButtonsDiv.style.display = 'none';
                    } else {
                        resultDiv.innerHTML = `
-                           <p id="upi-mismatch-message" class="error-message">UPI ID Mismatch:</p>
-                           <p id="qr-code-label">QR Code: ${qrUpiId}</p>
-                           <p id="text-label">Text: ${ocrUpiId}</p>
-                           <p id="mismatch-explanation">UPI ID in the QR code and Printed text do not match. Please try checking them separately.</p>
+                           <p id="upi-mismatch-message" class="error-message">${getTranslatedText('upi-mismatch-message', 'UPI ID Mismatch:')}</p>
+                           <p id="qr-code-label">${getTranslatedText('qr-code-label', 'QR Code:')} ${qrUpiId}</p>
+                           <p id="text-label">${getTranslatedText('text-label', 'Text:')} ${ocrUpiId}</p>
+                           <p id="mismatch-explanation">${getTranslatedText('mismatch-explanation', 'UPI ID in the QR code and Printed text do not match. Please try checking them separately.')}</p>
                        `;
                        showInitialButtons();
                    }
@@ -576,7 +576,7 @@
                  currentUPI = qrUpiId;
                  resultDiv.innerHTML = `
                       <p class="upi-id-display">${currentUPI}</p>
-                      <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> <span id="check-upi-text">Check UPI ID</span></button>
+                      <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> <span id="check-upi-text">${getTranslatedText('check-upi-text', 'Check UPI ID')}</span></button>
                  `;
                  document.getElementById('checkUpiButton').addEventListener('click', () => verifyUPIWithDatabase(currentUPI));
                  initialButtonsDiv.style.display = 'none';
@@ -584,7 +584,7 @@
                  currentUPI = ocrUpiId;
                  resultDiv.innerHTML = `
                       <p class="upi-id-display">${currentUPI}</p>
-                      <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> <span id="check-upi-text">Check UPI ID</span></button>
+                      <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> <span id="check-upi-text">${getTranslatedText('check-upi-text', 'Check UPI ID')}</span></button>
                  `;
                  document.getElementById('checkUpiButton').addEventListener('click', () => verifyUPIWithDatabase(currentUPI));
                  initialButtonsDiv.style.display = 'none';
@@ -595,7 +595,7 @@
         async function verifyUPIWithDatabase(upiIdToCheck) {
              if (!upiIdToCheck) return;
 
-             resultDiv.innerHTML = '<div class="spinner"></div><p id="verifying-upi-message" class="result-message">Verifying UPI ID...</p>';
+             resultDiv.innerHTML = `<div class="spinner"></div><p id="verifying-upi-message" class="result-message">${getTranslatedText('verifying-upi-message', 'Verifying UPI ID...')}</p>`;
              initialButtonsDiv.style.display = 'none';
 
              try {
@@ -639,12 +639,12 @@
              if (entityData) {
                  resultDiv.classList.add('verified');
                  resultDiv.innerHTML = `
-                     <p class="success-message"><i class="fas fa-check-circle"></i> <span id="verified-upi-message">Verified UPI ID</span></p>
+                     <p class="success-message"><i class="fas fa-check-circle"></i> <span id="verified-upi-message">${getTranslatedText('verified-upi-message', 'Verified UPI ID')}</span></p>
                      <p class="upi-id-display">${verifiedUpiId}</p>
-                     <p class="entity-details"><span id="name-label">Name:</span> ${entityData.name}</p>
-                     <p class="entity-details"><span id="reg-no-label">Reg. No:</span> ${entityData.regNo}</p>
-                     <button class="result-button" id="copyUpiButton"><i class="fas fa-copy"></i> <span id="copy-upi-text">Copy UPI to Make Payment</span></button>
-                     <button class="result-button" id="tryAgainButton"><i class="fas fa-redo"></i> <span id="scan-another-text">Scan Another</span></button>
+                     <p class="entity-details"><span id="name-label">${getTranslatedText('name-label', 'Name:')}</span> ${entityData.name}</p>
+                     <p class="entity-details"><span id="reg-no-label">${getTranslatedText('reg-no-label', 'Reg. No:')}</span> ${entityData.regNo}</p>
+                     <button class="result-button" id="copyUpiButton"><i class="fas fa-copy"></i> <span id="copy-upi-text">${getTranslatedText('copy-upi-text', 'Copy UPI to Make Payment')}</span></button>
+                     <button class="result-button" id="tryAgainButton"><i class="fas fa-redo"></i> <span id="scan-another-text">${getTranslatedText('scan-another-text', 'Scan Another')}</span></button>
                  `;
                  document.getElementById('copyUpiButton').addEventListener('click', () => copyToClipboard(verifiedUpiId));
                  document.getElementById('tryAgainButton').addEventListener('click', resetUI);
@@ -652,9 +652,9 @@
              } else {
                  resultDiv.classList.remove('verified');
                  resultDiv.innerHTML = `
-                     <p class="error-message"><i class="fas fa-times-circle"></i> <span id="upi-not-found-message">UPI ID Not Found</span></p>
+                     <p class="error-message"><i class="fas fa-times-circle"></i> <span id="upi-not-found-message">${getTranslatedText('upi-not-found-message', 'UPI ID Not Found')}</span></p>
                       <p class="upi-id-display">${verifiedUpiId}</p>
-                     <p id="not-found-explanation">This UPI ID was not found in the verified list.</p>
+                     <p id="not-found-explanation">${getTranslatedText('not-found-explanation', 'This UPI ID was not found in the verified list.')}</p>
                  `;
                   showInitialButtons();
              }
@@ -666,7 +666,7 @@
                     const copyButton = document.getElementById('copyUpiButton');
                     if(copyButton) {
                         const originalText = copyButton.innerHTML;
-                        copyButton.innerHTML = '<i class="fas fa-check"></i> <span id="copied-text">Copied!</span>';
+                        copyButton.innerHTML = `<i class="fas fa-check"></i> <span id="copied-text">${getTranslatedText('copied-text', 'Copied!')}</span>`;
                         copyButton.disabled = true;
                         setTimeout(() => {
                             copyButton.innerHTML = originalText;
@@ -676,7 +676,7 @@
                  })
                 .catch(err => {
                     console.error('Error copying text:', err);
-                    alert('Failed to copy UPI ID.');
+                    alert(getTranslatedText('copy-error', 'Failed to copy UPI ID.'));
                 });
         }
 
@@ -693,7 +693,7 @@
 
         function resetUI() {
               resetUIBeforeAction();
-              resultDiv.innerHTML = '<p id="status-message" class="result-message">Status will appear here. Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.</p>';
+              resultDiv.innerHTML = `<p id="status-message" class="result-message">${getTranslatedText('status-message', 'Status will appear here. Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.')}</p>`;
               showInitialButtons();
           }
 

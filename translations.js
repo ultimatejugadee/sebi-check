@@ -36,6 +36,9 @@ function loadTranslations(languageCode) {
                 return;
             }
             
+            // Store translations in global cache for dynamic content
+            window.translationsCache = {};
+            
             // Get all text elements
             const textNodes = targetNode.getElementsByTagName('text');
             
@@ -44,6 +47,9 @@ function loadTranslations(languageCode) {
                 const textNode = textNodes[i];
                 const textId = textNode.getAttribute('id');
                 const textValue = textNode.textContent;
+                
+                // Store in cache for dynamic content
+                window.translationsCache[textId] = textValue;
                 
                 // Find the element and update its text
                 const element = document.getElementById(textId);
@@ -57,4 +63,18 @@ function loadTranslations(languageCode) {
         .catch(error => {
             console.error('Error loading translations:', error);
         });
+}
+
+/**
+ * Get translated text for a specific text ID
+ * @param {string} textId - The ID of the text to translate
+ * @param {string} defaultText - Default text to use if translation is not found
+ * @return {string} The translated text or default text
+ */
+function getTranslatedText(textId, defaultText) {
+    // Check if translations cache exists
+    if (window.translationsCache && window.translationsCache[textId]) {
+        return window.translationsCache[textId];
+    }
+    return defaultText;
 }
