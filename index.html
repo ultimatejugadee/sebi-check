@@ -199,28 +199,28 @@
 <body>
     <header>
          <div id="language-display" class="language-display" onclick="changeLanguage()">
-            Language: <span id="current-language">Loading...</span>
+            <span id="language-label">Language:</span> <span id="current-language">Loading...</span>
         </div>
     </header>
 
     <main>
         <img src="https://dur682txgv28e.cloudfront.net/assets/images/sebi-logo-crop.png" alt="SEBI Logo" class="main-logo">
-        <h1 align="center">CHECK</h1>
+        <h1 id="main-title" align="center">CHECK</h1>
 
 
         <div class="content">
-            <h3 class="section-title">CHECK  VERIFIED UPI ID</h3>
+            <h3 id="section-title-1" class="section-title">CHECK  VERIFIED UPI ID</h3>
             <div class="button-group">
                 <button class="option-button" onclick="window.location.href='capture.html'">
-                    <i class="fas fa-camera"></i> <span>USING PHOTO</span> </button>
+                    <i class="fas fa-camera"></i> <span id="photo-button">USING PHOTO</span> </button>
                 <button class="option-button" onclick="window.location.href='manual-check.html'">
-                    <i class="fas fa-keyboard"></i> <span>TYPE</span> </button>
+                    <i class="fas fa-keyboard"></i> <span id="type-button">TYPE</span> </button>
             </div>
 
-            <h3 class="section-title">CHECK ACCOUNT DETAILS</h3>
+            <h3 id="section-title-2" class="section-title">CHECK ACCOUNT DETAILS</h3>
             <div class="button-group">
                 <button class="option-button" onclick="window.location.href='account-check.html'">
-                    <i class="fas fa-shield-alt"></i> <span>FOR SAFER NEFT/RTGS TRANSFERS</span> </button>
+                    <i class="fas fa-shield-alt"></i> <span id="account-check-button">FOR SAFER NEFT/RTGS TRANSFERS</span> </button>
             </div>
         </div>
     </main>
@@ -233,12 +233,14 @@
             // Check if a language has been selected
             if (!preferredLanguage) {
                 // If no language is found in localStorage, redirect to the selection page
-                console.log("No language preference found. Redirecting to language selection."); // Optional: for debugging
-                window.location.href = 'lang_select.html'; // Make sure this path is correct
+                console.log("No language preference found. Redirecting to language selection.");
+                window.location.href = 'lang_select.html';
             } else {
                 // If a language preference exists, update the display
-                console.log(`Language preference found: ${preferredLanguage}. Updating display.`); // Optional: for debugging
-                updateLanguageDisplay(preferredLanguage); // Pass the language to the function
+                console.log(`Language preference found: ${preferredLanguage}. Updating display.`);
+                updateLanguageDisplay(preferredLanguage);
+                // Load translations after language is determined
+                loadTranslations(preferredLanguage);
             }
         });
 
@@ -300,5 +302,9 @@
             window.location.href = 'lang_select.html'; // Ensure this page exists
         }
     </script>
+    <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <!-- Add the translations script -->
+    <script src="translations.js"></script>
 </body>
 </html>

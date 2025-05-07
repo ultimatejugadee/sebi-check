@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+  <language id="en">
+    <!-- Index page translations -->
+    <text id="main-title">CHECK</text>
+    <text id="section-title-1">CHECK VERIFIED UPI ID</text>
+    <text id="photo-button">USING PHOTO</text>
+    <text id="type-button">TYPE</text>
+    <text id="section-title-2">CHECK ACCOUNT DETAILS</text>
+    <text id="account-check-button">FOR SAFER NEFT/RTGS TRANSFERS</text>
+    <text id="language-label">Language:</text>
+    
+    <!-- Capture page translations -->
+    <text id="initial-message">Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.</text>
+    <text id="camera-button-text">Use Camera</text>
+    <text id="capture-button-text">Capture Image</text>
+    <text id="upload-button-text">Upload Image</text>
+    <text id="camera-ready-message">Point camera at the QR code / UPI ID and capture.</text>
+    <text id="camera-error-message">Could not access camera. Please ensure permissions are granted and try again.</text>
+    <text id="camera-not-ready-message">Camera not ready. Please try again.</text>
+    <text id="processing-message">Processing image...</text>
+    <text id="scanning-qr-message">Scanning QR Code...</text>
+    <text id="ocr-message">Reading text (OCR)...</text>
+    <text id="multiple-upi-message">Multiple UPI IDs found in text. Please ensure only one is visible.</text>
+    <text id="unknown-error-message">An unknown error occurred during processing.</text>
+    <text id="no-upi-detected-message">No UPI QR code or typed UPI ID detected in the image.</text>
+    <text id="check-upi-text">Check UPI ID</text>
+    <text id="upi-mismatch-message">UPI ID Mismatch:</text>
+    <text id="qr-code-label">QR Code:</text>
+    <text id="text-label">Text:</text>
+    <text id="mismatch-explanation">UPI ID in the QR code and Printed text do not match. Please try checking them separately.</text>
+    <text id="verifying-upi-message">Verifying UPI ID...</text>
+    <text id="verified-upi-message">Verified UPI ID</text>
+    <text id="name-label">Name:</text>
+    <text id="reg-no-label">Reg. No:</text>
+    <text id="copy-upi-text">Copy UPI to Make Payment</text>
+    <text id="scan-another-text">Scan Another</text>
+    <text id="upi-not-found-message">UPI ID Not Found</text>
+    <text id="not-found-explanation">This UPI ID was not found in the verified list.</text>
+    <text id="copied-text">Copied!</text>
+    <text id="status-message">Status will appear here. Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.</text>
+    
+    <!-- Account check page translations -->
+    <text id="account-check-title">Account Details Verification</text>
+    <text id="reg-no-input-label">Registration Number:</text>
+    <text id="ifsc-input-label">IFSC Code:</text>
+    <text id="acc-no-input-label">Account Number:</text>
+    <text id="check-account-button-text">Check Account Details</text>
+    <text id="initial-instruction">Enter all three details above and click "Check Account Details".</text>
+    <text id="validation-error">Please enter all three details: Registration Number, IFSC Code, and Account Number.</text>
+    <text id="verifying-message">Verifying account details...</text>
+    <text id="account-verified-message">Account Details Verified</text>
+    <text id="name-label">Name:</text>
+    <text id="upi-id-label">UPI ID:</text>
+    <text id="copy-acc-text">Copy Account No.</text>
+    <text id="copy-ifsc-text">Copy IFSC</text>
+    <text id="no-match-message">No Match Found</text>
+    <text id="no-match-explanation">The provided account details (Registration No., IFSC, Account No.) did not match any verified records.</text>
+    
+    <!-- Manual check page translations - Adding missing items -->
+    <text id="manual-check-title">Manual UPI ID Verification</text>
+    <text id="upi-input-label">Enter UPI ID:</text>
+    <text id="check-upi-button-text">Check UPI ID</text>
+    <text id="manual-initial-instruction">Enter a UPI ID above and click "Check UPI ID".</text>
+    <text id="empty-upi-error">Please enter a UPI ID.</text>
+    <text id="invalid-format-error">Invalid UPI ID format. Please enter a valid ID (e.g., username@bankhandle).</text>
+  </language>
+  
+  <language id="hi">
+    <!-- Index page translations -->
+    <text id="main-title">जांचें</text>
+    <text id="section-title-1">सत्यापित यूपीआई आईडी जांचें</text>
+    <text id="photo-button">फोटो का उपयोग करके</text>
+    <text id="type-button">टाइप करें</text>
+    <text id="section-title-2">खाते का विवरण जांचें</text>
+    <text id="account-check-button">सुरक्षित NEFT/RTGS ट्रांसफर के लिए</text>
+    <text id="language-label">भाषा:</text>
+    
+    <!-- Capture page translations -->
+    <text id="initial-message">कृपया UPI QR कोड और/या टाइप की गई UPI आईडी वाली एक छवि कैप्चर या अपलोड करें।</text>
+    <text id="camera-button-text">कैमरा का उपयोग करें</text>
+    <text id="capture-button-text">छवि कैप्चर करें</text>
+    <text id="upload-button-text">छवि अपलोड करें</text>
+    <text id="camera-ready-message">QR कोड / UPI आईडी पर कैमरा निर्देशित करें और कैप्चर करें।</text>
+    <text id="camera-error-message">कैमरा एक्सेस नहीं किया जा सका। कृपया अनुमतियां दी गई हैं, यह सुनिश्चित करें और फिर से प्रयास करें।</text>
+    <text id="camera-not-ready-message">कैमरा तैयार नहीं है। कृपया पुनः प्रयास करें।</text>
+    <text id="processing-message">छवि को संसाधित किया जा रहा है...</text>
+    <text id="scanning-qr-message">QR कोड स्कैन किया जा रहा है...</text>
+    <text id="ocr-message">टेक्स्ट पढ़ा जा रहा है (OCR)...</text>
+    <text id="multiple-upi-message">टेक्स्ट में कई UPI आईडी मिली हैं। कृपया सुनिश्चित करें कि केवल एक दिखाई दे रही है।</text>
+    <text id="unknown-error-message">प्रक्रिया के दौरान एक अज्ञात त्रुटि हुई।</text>
+    <text id="no-upi-detected-message">छवि में कोई UPI QR कोड या टाइप की गई UPI आईडी नहीं मिली।</text>
+    <text id="check-upi-text">UPI आईडी जांचें</text>
+    <text id="upi-mismatch-message">UPI आईडी मेल नहीं खाती:</text>
+    <text id="qr-code-label">QR कोड:</text>
+    <text id="text-label">टेक्स्ट:</text>
+    <text id="mismatch-explanation">QR कोड और प्रिंटेड टेक्स्ट में UPI आईडी मेल नहीं खाती। कृपया इन्हें अलग-अलग जांचने का प्रयास करें।</text>
+    <text id="verifying-upi-message">UPI आईडी सत्यापित की जा रही है...</text>
+    <text id="verified-upi-message">सत्यापित UPI आईडी</text>
+    <text id="name-label">नाम:</text>
+    <text id="reg-no-label">पंजीकरण संख्या:</text>
+    <text id="copy-upi-text">भुगतान करने के लिए UPI कॉपी करें</text>
+    <text id="scan-another-text">दूसरा स्कैन करें</text>
+    <text id="upi-not-found-message">UPI आईडी नहीं मिली</text>
+    <text id="not-found-explanation">यह UPI आईडी सत्यापित सूची में नहीं मिली।</text>
+    <text id="copied-text">कॉपी किया गया!</text>
+    <text id="status-message">स्थिति यहां दिखाई जाएगी। कृपया UPI QR कोड और/या टाइप की गई UPI आईडी वाली एक छवि कैप्चर या अपलोड करें।</text>
+    
+    <!-- Account check page translations -->
+    <text id="account-check-title">खाता विवरण सत्यापन</text>
+    <text id="reg-no-input-label">पंजीकरण संख्या:</text>
+    <text id="ifsc-input-label">IFSC कोड:</text>
+    <text id="acc-no-input-label">खाता संख्या:</text>
+    <text id="check-account-button-text">खाता विवरण जांचें</text>
+    <text id="initial-instruction">ऊपर तीनों विवरण दर्ज करें और "खाता विवरण जांचें" पर क्लिक करें।</text>
+    <text id="validation-error">कृपया तीनों विवरण दर्ज करें: पंजीकरण संख्या, IFSC कोड, और खाता संख्या।</text>
+    <text id="verifying-message">खाता विवरण सत्यापित किया जा रहा है...</text>
+    <text id="account-verified-message">खाता विवरण सत्यापित</text>
+    <text id="name-label">नाम:</text>
+    <text id="upi-id-label">UPI आईडी:</text>
+    <text id="copy-acc-text">खाता संख्या कॉपी करें</text>
+    <text id="copy-ifsc-text">IFSC कॉपी करें</text>
+    <text id="no-match-message">कोई मिलान नहीं मिला</text>
+    <text id="no-match-explanation">प्रदान किए गए खाता विवरण (पंजीकरण संख्या, IFSC, खाता संख्या) किसी भी सत्यापित रिकॉर्ड से मेल नहीं खाते।</text>
+    
+    <!-- Manual check page translations - Adding missing items -->
+    <text id="manual-check-title">मैनुअल UPI आईडी सत्यापन</text>
+    <text id="upi-input-label">UPI आईडी दर्ज करें:</text>
+    <text id="check-upi-button-text">UPI आईडी जांचें</text>
+    <text id="manual-initial-instruction">ऊपर UPI आईडी दर्ज करें और "UPI आईडी जांचें" पर क्लिक करें।</text>
+    <text id="empty-upi-error">कृपया UPI आईडी दर्ज करें।</text>
+    <text id="invalid-format-error">अमान्य UPI आईडी प्रारूप। कृपया एक वैध आईडी दर्ज करें (उदा., username@bankhandle)।</text>
+  </language>
+  <language id="mr">
+    <text id="main-title">पडताळा</text>
+    <text id="section-title-1">सत्यापित UPI आयडी पडताळा</text>
+    <text id="photo-button">फोटो वापरून</text>
+    <text id="type-button">टाइप करा</text>
+    <text id="section-title-2">खाते तपशील पडताळा</text>
+    <text id="account-check-button">सुरक्षित NEFT/RTGS हस्तांतरणासाठी</text>
+    <text id="language-label">भाषा:</text>
+
+    <text id="initial-message">कृपया UPI QR कोड आणि/किंवा टाइप केलेला UPI आयडी असलेली इमेज कॅप्चर करा किंवा अपलोड करा.</text>
+    <text id="camera-button-text">कॅमेरा वापरा</text>
+    <text id="capture-button-text">फोटो काढा</text>
+    <text id="upload-button-text">इमेज अपलोड करा</text>
+    <text id="camera-ready-message">कॅमेरा QR कोड / UPI आयडीवर धरा आणि फोटो काढा.</text>
+    <text id="camera-error-message">कॅमेरा ॲक्सेस करता आला नाही. कृपया परवानग्या दिल्याची खात्री करा आणि पुन्हा प्रयत्न करा.</text>
+    <text id="camera-not-ready-message">कॅमेरा तयार नाही. कृपया पुन्हा प्रयत्न करा.</text>
+    <text id="processing-message">इमेजवर प्रक्रिया होत आहे...</text>
+    <text id="scanning-qr-message">QR कोड स्कॅन करत आहे...</text>
+    <text id="ocr-message">मजकूर वाचत आहे (OCR)...</text>
+    <text id="multiple-upi-message">मजकुरात एकापेक्षा जास्त UPI आयडी आढळले आहेत. कृपया फक्त एकच दिसेल याची खात्री करा.</text>
+    <text id="unknown-error-message">प्रक्रियेदरम्यान अज्ञात त्रुटी आली.</text>
+    <text id="no-upi-detected-message">इमेजमध्ये कोणताही UPI QR कोड किंवा टाइप केलेला UPI आयडी आढळला नाही.</text>
+    <text id="check-upi-text">UPI आयडी पडताळा</text>
+    <text id="upi-mismatch-message">UPI आयडी जुळत नाही:</text>
+    <text id="qr-code-label">QR कोड:</text>
+    <text id="text-label">मजकूर:</text>
+    <text id="mismatch-explanation">QR कोडमधील UPI आयडी आणि छापलेला मजकूर जुळत नाहीत. कृपया ते स्वतंत्रपणे तपासण्याचा प्रयत्न करा.</text>
+    <text id="verifying-upi-message">UPI आयडी सत्यापित करत आहे...</text>
+    <text id="verified-upi-message">सत्यापित UPI आयडी</text>
+    <text id="name-label">नाव:</text>
+    <text id="reg-no-label">नोंदणी क्र.:</text>
+    <text id="copy-upi-text">पेमेंट करण्यासाठी UPI कॉपी करा</text>
+    <text id="scan-another-text">दुसरे स्कॅन करा</text>
+    <text id="upi-not-found-message">UPI आयडी सापडला नाही</text>
+    <text id="not-found-explanation">हा UPI आयडी सत्यापित यादीत सापडला नाही.</text>
+    <text id="copied-text">कॉपी केले!</text>
+    <text id="status-message">स्थिती येथे दिसेल. कृपया UPI QR कोड आणि/किंवा टाइप केलेला UPI आयडी असलेली इमेज कॅप्चर करा किंवा अपलोड करा.</text>
+
+    <text id="account-check-title">खाते तपशील पडताळणी</text>
+    <text id="reg-no-input-label">नोंदणी क्रमांक:</text>
+    <text id="ifsc-input-label">IFSC कोड:</text>
+    <text id="acc-no-input-label">खाते क्रमांक:</text>
+    <text id="check-account-button-text">खाते तपशील पडताळा</text>
+    <text id="initial-instruction">वरील तिन्ही तपशील प्रविष्ट करा आणि "खाते तपशील पडताळा" वर क्लिक करा.</text>
+    <text id="validation-error">कृपया तिन्ही तपशील प्रविष्ट करा: नोंदणी क्रमांक, IFSC कोड आणि खाते क्रमांक.</text>
+    <text id="verifying-message">खाते तपशील सत्यापित करत आहे...</text>
+    <text id="account-verified-message">खाते तपशील सत्यापित</text>
+    <text id="name-label">नाव:</text>
+    <text id="upi-id-label">UPI आयडी:</text>
+    <text id="copy-acc-text">खाते क्र. कॉपी करा</text>
+    <text id="copy-ifsc-text">IFSC कॉपी करा</text>
+    <text id="no-match-message">जुळले नाही</text>
+    <text id="no-match-explanation">दिलेले खाते तपशील (नोंदणी क्र., IFSC, खाते क्र.) कोणत्याही सत्यापित नोंदींशी जुळले नाहीत.</text>
+
+    <text id="manual-check-title">मॅन्युअल UPI आयडी पडताळणी</text>
+    <text id="upi-input-label">UPI आयडी प्रविष्ट करा:</text>
+    <text id="check-upi-button-text">UPI आयडी पडताळा</text>
+    <text id="manual-initial-instruction">वरील UPI आयडी प्रविष्ट करा आणि "UPI आयडी पडताळा" वर क्लिक करा.</text>
+    <text id="empty-upi-error">कृपया UPI आयडी प्रविष्ट करा.</text>
+    <text id="invalid-format-error">अवैध UPI आयडी फॉरमॅट. कृपया वैध आयडी प्रविष्ट करा (उदा. वापरकर्तानाव@बँकहँडल).</text>
+  </language>
+
+  <language id="gu">
+    <text id="main-title">ચકાસો</text>
+    <text id="section-title-1">ચકાસાયેલ UPI ID તપાસો</text>
+    <text id="photo-button">ફોટો વાપરીને</text>
+    <text id="type-button">ટાઇપ કરો</text>
+    <text id="section-title-2">એકાઉન્ટ વિગતો તપાસો</text>
+    <text id="account-check-button">સુરક્ષિત NEFT/RTGS ટ્રાન્સફર માટે</text>
+    <text id="language-label">ભાષા:</text>
+
+    <text id="initial-message">કૃપા કરીને UPI QR કોડ અને/અથવા ટાઇપ કરેલ UPI ID ધરાવતી છબી કેપ્ચર કરો અથવા અપલોડ કરો.</text>
+    <text id="camera-button-text">કેમેરા વાપરો</text>
+    <text id="capture-button-text">ફોટો પાડો</text>
+    <text id="upload-button-text">છબી અપલોડ કરો</text>
+    <text id="camera-ready-message">કેમેરાને QR કોડ / UPI ID પર રાખો અને ફોટો પાડો.</text>
+    <text id="camera-error-message">કેમેરા એક્સેસ કરી શકાયો નથી. કૃપા કરીને ખાતરી કરો કે પરવાનગીઓ આપવામાં આવી છે અને ફરી પ્રયાસ કરો.</text>
+    <text id="camera-not-ready-message">કેમેરા તૈયાર નથી. કૃપા કરીને ફરી પ્રયાસ કરો.</text>
+    <text id="processing-message">છબી પર પ્રક્રિયા થઈ રહી છે...</text>
+    <text id="scanning-qr-message">QR કોડ સ્કેન કરી રહ્યું છે...</text>
+    <text id="ocr-message">ટેક્સ્ટ વાંચી રહ્યું છે (OCR)...</text>
+    <text id="multiple-upi-message">ટેક્સ્ટમાં બહુવિધ UPI IDs મળી આવ્યા છે. કૃપા કરીને ખાતરી કરો કે ફક્ત એક જ દેખાય છે.</text>
+    <text id="unknown-error-message">પ્રક્રિયા દરમિયાન અજાણી ભૂલ આવી.</text>
+    <text id="no-upi-detected-message">છબીમાં કોઈ UPI QR કોડ અથવા ટાઇપ કરેલ UPI ID મળ્યો નથી.</text>
+    <text id="check-upi-text">UPI ID તપાસો</text>
+    <text id="upi-mismatch-message">UPI ID મેળ ખાતો નથી:</text>
+    <text id="qr-code-label">QR કોડ:</text>
+    <text id="text-label">ટેક્સ્ટ:</text>
+    <text id="mismatch-explanation">QR કોડમાંનો UPI ID અને પ્રિન્ટેડ ટેક્સ્ટ મેળ ખાતા નથી. કૃપા કરીને તેમને અલગથી તપાસવાનો પ્રયાસ કરો.</text>
+    <text id="verifying-upi-message">UPI ID ચકાસી રહ્યું છે...</text>
+    <text id="verified-upi-message">ચકાસાયેલ UPI ID</text>
+    <text id="name-label">નામ:</text>
+    <text id="reg-no-label">નોંધણી નં.:</text>
+    <text id="copy-upi-text">ચુકવણી કરવા માટે UPI કૉપિ કરો</text>
+    <text id="scan-another-text">બીજું સ્કેન કરો</text>
+    <text id="upi-not-found-message">UPI ID મળ્યો નથી</text>
+    <text id="not-found-explanation">આ UPI ID ચકાસાયેલ યાદીમાં મળ્યો નથી.</text>
+    <text id="copied-text">કૉપિ કર્યું!</text>
+    <text id="status-message">સ્થિતિ અહીં દેખાશે. કૃપા કરીને UPI QR કોડ અને/અથવા ટાઇપ કરેલ UPI ID ધરાવતી છબી કેપ્ચર કરો અથવા અપલોડ કરો.</text>
+
+    <text id="account-check-title">એકાઉન્ટ વિગતોની ચકાસણી</text>
+    <text id="reg-no-input-label">નોંધણી નંબર:</text>
+    <text id="ifsc-input-label">IFSC કોડ:</text>
+    <text id="acc-no-input-label">એકાઉન્ટ નંબર:</text>
+    <text id="check-account-button-text">એકાઉન્ટ વિગતો તપાસો</text>
+    <text id="initial-instruction">ઉપરની ત્રણેય વિગતો દાખલ કરો અને "એકાઉન્ટ વિગતો તપાસો" પર ક્લિક કરો.</text>
+    <text id="validation-error">કૃપા કરીને ત્રણેય વિગતો દાખલ કરો: નોંધણી નંબર, IFSC કોડ અને એકાઉન્ટ નંબર.</text>
+    <text id="verifying-message">એકાઉન્ટ વિગતો ચકાસી રહ્યું છે...</text>
+    <text id="account-verified-message">એકાઉન્ટ વિગતો ચકાસાયેલ</text>
+    <text id="name-label">નામ:</text>
+    <text id="upi-id-label">UPI ID:</text>
+    <text id="copy-acc-text">એકાઉન્ટ નં. કૉપિ કરો</text>
+    <text id="copy-ifsc-text">IFSC કૉપિ કરો</text>
+    <text id="no-match-message">કોઈ મેળ મળ્યો નથી</text>
+    <text id="no-match-explanation">પ્રદાન કરેલ એકાઉન્ટ વિગતો (નોંધણી નં., IFSC, એકાઉન્ટ નં.) કોઈપણ ચકાસાયેલ રેકોર્ડ સાથે મેળ ખાતી નથી.</text>
+
+    <text id="manual-check-title">મેન્યુઅલ UPI ID ચકાસણી</text>
+    <text id="upi-input-label">UPI ID દાખલ કરો:</text>
+    <text id="check-upi-button-text">UPI ID તપાસો</text>
+    <text id="manual-initial-instruction">ઉપર UPI ID દાખલ કરો અને "UPI ID તપાસો" પર ક્લિક કરો.</text>
+    <text id="empty-upi-error">કૃપા કરીને UPI ID દાખલ કરો.</text>
+    <text id="invalid-format-error">અમાન્ય UPI ID ફોર્મેટ. કૃપા કરીને માન્ય ID દાખલ કરો (દા.ત., username@bankhandle).</text>
+  </language>
+
+  <language id="ta">
+    <text id="main-title">சரிபார்க்கவும்</text>
+    <text id="section-title-1">சரிபார்க்கப்பட்ட UPI ஐடியைச் சரிபார்க்கவும்</text>
+    <text id="photo-button">புகைப்படத்தைப் பயன்படுத்தி</text>
+    <text id="type-button">தட்டச்சு செய்க</text>
+    <text id="section-title-2">கணக்கு விவரங்களைச் சரிபார்க்கவும்</text>
+    <text id="account-check-button">பாதுகாப்பான NEFT/RTGS பரிமாற்றங்களுக்கு</text>
+    <text id="language-label">மொழி:</text>
+
+    <text id="initial-message">UPI QR குறியீடு மற்றும்/அல்லது தட்டச்சு செய்த UPI ஐடி உள்ள படத்தைப் பிடிக்கவும் அல்லது பதிவேற்றவும்.</text>
+    <text id="camera-button-text">கேமராவைப் பயன்படுத்தவும்</text>
+    <text id="capture-button-text">படத்தைப் பிடிக்கவும்</text>
+    <text id="upload-button-text">படத்தைப் பதிவேற்றவும்</text>
+    <text id="camera-ready-message">கேமராவை QR குறியீடு / UPI ஐடியில் சுட்டி படம்பிடிக்கவும்.</text>
+    <text id="camera-error-message">கேமராவை அணுக முடியவில்லை. அனுமதிகள் வழங்கப்பட்டுள்ளதா என்பதை உறுதிசெய்து மீண்டும் முயற்சிக்கவும்.</text>
+    <text id="camera-not-ready-message">கேமரா தயாராக இல்லை. மீண்டும் முயற்சிக்கவும்.</text>
+    <text id="processing-message">படம் செயலாக்கப்படுகிறது...</text>
+    <text id="scanning-qr-message">QR குறியீடு ஸ்கேன் செய்யப்படுகிறது...</text>
+    <text id="ocr-message">உரையைப் படிக்கிறது (OCR)...</text>
+    <text id="multiple-upi-message">உரையில் பல UPI ஐடிகள் காணப்பட்டன. ஒன்று மட்டுமே தெரியும் என்பதை உறுதிப்படுத்தவும்.</text>
+    <text id="unknown-error-message">செயலாக்கத்தின் போது அறியப்படாத பிழை ஏற்பட்டது.</text>
+    <text id="no-upi-detected-message">படத்தில் UPI QR குறியீடு அல்லது தட்டச்சு செய்த UPI ஐடி கண்டறியப்படவில்லை.</text>
+    <text id="check-upi-text">UPI ஐடியைச் சரிபார்க்கவும்</text>
+    <text id="upi-mismatch-message">UPI ஐடி பொருந்தவில்லை:</text>
+    <text id="qr-code-label">QR குறியீடு:</text>
+    <text id="text-label">உரை:</text>
+    <text id="mismatch-explanation">QR குறியீட்டில் உள்ள UPI ஐடியும் அச்சிடப்பட்ட உரையும் பொருந்தவில்லை. தயவுசெய்து அவற்றை தனித்தனியாக சரிபார்க்க முயற்சிக்கவும்.</text>
+    <text id="verifying-upi-message">UPI ஐடி சரிபார்க்கப்படுகிறது...</text>
+    <text id="verified-upi-message">சரிபார்க்கப்பட்ட UPI ஐடி</text>
+    <text id="name-label">பெயர்:</text>
+    <text id="reg-no-label">பதிவு எண்:</text>
+    <text id="copy-upi-text">பணம் செலுத்த UPI ஐ நகலெடுக்கவும்</text>
+    <text id="scan-another-text">மற்றொன்றை ஸ்கேன் செய்யவும்</text>
+    <text id="upi-not-found-message">UPI ஐடி காணப்படவில்லை</text>
+    <text id="not-found-explanation">இந்த UPI ஐடி சரிபார்க்கப்பட்ட பட்டியலில் காணப்படவில்லை.</text>
+    <text id="copied-text">நகலெடுக்கப்பட்டது!</text>
+    <text id="status-message">நிலை இங்கே தோன்றும். UPI QR குறியீடு மற்றும்/அல்லது தட்டச்சு செய்த UPI ஐடி உள்ள படத்தைப் பிடிக்கவும் அல்லது பதிவேற்றவும்.</text>
+
+    <text id="account-check-title">கணக்கு விவரங்கள் சரிபார்ப்பு</text>
+    <text id="reg-no-input-label">பதிவு எண்:</text>
+    <text id="ifsc-input-label">IFSC குறியீடு:</text>
+    <text id="acc-no-input-label">கணக்கு எண்:</text>
+    <text id="check-account-button-text">கணக்கு விவரங்களைச் சரிபார்க்கவும்</text>
+    <text id="initial-instruction">மேலே உள்ள மூன்று விவரங்களையும் உள்ளிட்டு "கணக்கு விவரங்களைச் சரிபார்க்கவும்" என்பதைக் கிளிக் செய்யவும்.</text>
+    <text id="validation-error">தயவுசெய்து மூன்று விவரங்களையும் உள்ளிடவும்: பதிவு எண், IFSC குறியீடு மற்றும் கணக்கு எண்.</text>
+    <text id="verifying-message">கணக்கு விவரங்கள் சரிபார்க்கப்படுகின்றன...</text>
+    <text id="account-verified-message">கணக்கு விவரங்கள் சரிபார்க்கப்பட்டன</text>
+    <text id="name-label">பெயர்:</text>
+    <text id="upi-id-label">UPI ஐடி:</text>
+    <text id="copy-acc-text">கணக்கு எண்ணை நகலெடுக்கவும்</text>
+    <text id="copy-ifsc-text">IFSC ஐ நகலெடுக்கவும்</text>
+    <text id="no-match-message">பொருத்தம் காணப்படவில்லை</text>
+    <text id="no-match-explanation">வழங்கப்பட்ட கணக்கு விவரங்கள் (பதிவு எண், IFSC, கணக்கு எண்) சரிபார்க்கப்பட்ட பதிவுகளுடன் பொருந்தவில்லை.</text>
+
+    <text id="manual-check-title">கைமுறை UPI ஐடி சரிபார்ப்பு</text>
+    <text id="upi-input-label">UPI ஐடியை உள்ளிடவும்:</text>
+    <text id="check-upi-button-text">UPI ஐடியைச் சரிபார்க்கவும்</text>
+    <text id="manual-initial-instruction">மேலே ஒரு UPI ஐடியை உள்ளிட்டு "UPI ஐடியைச் சரிபார்க்கவும்" என்பதைக் கிளிக் செய்யவும்.</text>
+    <text id="empty-upi-error">தயவுசெய்து ஒரு UPI ஐடியை உள்ளிடவும்.</text>
+    <text id="invalid-format-error">தவறான UPI ஐடி வடிவம். தயவுசெய்து சரியான ஐடியை உள்ளிடவும் (எ.கா., username@bankhandle).</text>
+  </language>
+
+  <language id="bn">
+    <text id="main-title">যাচাই করুন</text>
+    <text id="section-title-1">যাচাইকৃত UPI আইডি চেক করুন</text>
+    <text id="photo-button">ফটো ব্যবহার করে</text>
+    <text id="type-button">টাইপ করুন</text>
+    <text id="section-title-2">অ্যাকাউন্টের বিবরণ চেক করুন</text>
+    <text id="account-check-button">নিরাপদ NEFT/RTGS ট্রান্সফারের জন্য</text>
+    <text id="language-label">ভাষা:</text>
+
+    <text id="initial-message">অনুগ্রহ করে একটি UPI QR কোড এবং/অথবা টাইপ করা UPI আইডি ধারণকারী একটি ছবি তুলুন বা আপলোড করুন।</text>
+    <text id="camera-button-text">ক্যামেরা ব্যবহার করুন</text>
+    <text id="capture-button-text">ছবি তুলুন</text>
+    <text id="upload-button-text">ছবি আপলোড করুন</text>
+    <text id="camera-ready-message">ক্যামেরা QR কোড / UPI আইডিতে তাক করুন এবং ছবি তুলুন।</text>
+    <text id="camera-error-message">ক্যামেরা অ্যাক্সেস করা যায়নি। অনুগ্রহ করে নিশ্চিত করুন যে অনুমতি দেওয়া হয়েছে এবং আবার চেষ্টা করুন।</text>
+    <text id="camera-not-ready-message">ক্যামেরা প্রস্তুত নয়। অনুগ্রহ করে আবার চেষ্টা করুন।</text>
+    <text id="processing-message">ছবি প্রসেস করা হচ্ছে...</text>
+    <text id="scanning-qr-message">QR কোড স্ক্যান করা হচ্ছে...</text>
+    <text id="ocr-message">টেক্সট পড়া হচ্ছে (OCR)...</text>
+    <text id="multiple-upi-message">টেক্সটে একাধিক UPI আইডি পাওয়া গেছে। অনুগ্রহ করে নিশ্চিত করুন যে শুধুমাত্র একটি দৃশ্যমান।</text>
+    <text id="unknown-error-message">প্রসেসিংয়ের সময় একটি অজানা ত্রুটি ঘটেছে।</text>
+    <text id="no-upi-detected-message">ছবিতে কোনো UPI QR কোড বা টাইপ করা UPI আইডি সনাক্ত করা হয়নি।</text>
+    <text id="check-upi-text">UPI আইডি চেক করুন</text>
+    <text id="upi-mismatch-message">UPI আইডি মিলছে না:</text>
+    <text id="qr-code-label">QR কোড:</text>
+    <text id="text-label">টেক্সট:</text>
+    <text id="mismatch-explanation">QR কোডের UPI আইডি এবং প্রিন্টেড টেক্সট মিলছে না। অনুগ্রহ করে সেগুলি আলাদাভাবে চেক করার চেষ্টা করুন।</text>
+    <text id="verifying-upi-message">UPI আইডি যাচাই করা হচ্ছে...</text>
+    <text id="verified-upi-message">যাচাইকৃত UPI আইডি</text>
+    <text id="name-label">নাম:</text>
+    <text id="reg-no-label">নিবন্ধন নং:</text>
+    <text id="copy-upi-text">পেমেন্ট করতে UPI কপি করুন</text>
+    <text id="scan-another-text">অন্যটি স্ক্যান করুন</text>
+    <text id="upi-not-found-message">UPI আইডি পাওয়া যায়নি</text>
+    <text id="not-found-explanation">এই UPI আইডি যাচাইকৃত তালিকায় পাওয়া যায়নি।</text>
+    <text id="copied-text">কপি করা হয়েছে!</text>
+    <text id="status-message">স্ট্যাটাস এখানে প্রদর্শিত হবে। অনুগ্রহ করে একটি UPI QR কোড এবং/অথবা টাইপ করা UPI আইডি ধারণকারী একটি ছবি তুলুন বা আপলোড করুন।</text>
+
+    <text id="account-check-title">অ্যাকাউন্টের বিবরণ যাচাইকরণ</text>
+    <text id="reg-no-input-label">নিবন্ধন নম্বর:</text>
+    <text id="ifsc-input-label">IFSC কোড:</text>
+    <text id="acc-no-input-label">অ্যাকাউন্ট নম্বর:</text>
+    <text id="check-account-button-text">অ্যাকাউন্টের বিবরণ চেক করুন</text>
+    <text id="initial-instruction">উপরের তিনটি বিবরণ লিখুন এবং "অ্যাকাউন্টের বিবরণ চেক করুন" এ ক্লিক করুন।</text>
+    <text id="validation-error">অনুগ্রহ করে তিনটি বিবরণই লিখুন: নিবন্ধন নম্বর, IFSC কোড এবং অ্যাকাউন্ট নম্বর।</text>
+    <text id="verifying-message">অ্যাকাউন্টের বিবরণ যাচাই করা হচ্ছে...</text>
+    <text id="account-verified-message">অ্যাকাউন্টের বিবরণ যাচাইকৃত</text>
+    <text id="name-label">নাম:</text>
+    <text id="upi-id-label">UPI আইডি:</text>
+    <text id="copy-acc-text">অ্যাকাউন্ট নং কপি করুন</text>
+    <text id="copy-ifsc-text">IFSC কপি করুন</text>
+    <text id="no-match-message">কোনো মিল পাওয়া যায়নি</text>
+    <text id="no-match-explanation">প্রদত্ত অ্যাকাউন্টের বিবরণ (নিবন্ধন নং, IFSC, অ্যাকাউন্ট নং) কোনো যাচাইকৃত রেকর্ডের সাথে মেলেনি।</text>
+
+    <text id="manual-check-title">ম্যানুয়াল UPI আইডি যাচাইকরণ</text>
+    <text id="upi-input-label">UPI আইডি লিখুন:</text>
+    <text id="check-upi-button-text">UPI আইডি চেক করুন</text>
+    <text id="manual-initial-instruction">উপরে একটি UPI আইডি লিখুন এবং "UPI আইডি চেক করুন" এ ক্লিক করুন।</text>
+    <text id="empty-upi-error">অনুগ্রহ করে একটি UPI আইডি লিখুন।</text>
+    <text id="invalid-format-error">অবৈধ UPI আইডি ফর্ম্যাট। অনুগ্রহ করে একটি বৈধ আইডি লিখুন (যেমন, username@bankhandle)।</text>
+  </language>
+
+  <language id="te">
+    <text id="main-title">సరిచూడండి</text>
+    <text id="section-title-1">ధృవీకరించబడిన UPI IDని సరిచూడండి</text>
+    <text id="photo-button">ఫోటో ఉపయోగించి</text>
+    <text id="type-button">టైప్ చేయండి</text>
+    <text id="section-title-2">ఖాతా వివరాలను సరిచూడండి</text>
+    <text id="account-check-button">సురక్షితమైన NEFT/RTGS బదిలీల కోసం</text>
+    <text id="language-label">భాష:</text>
+
+    <text id="initial-message">దయచేసి UPI QR కోడ్ మరియు/లేదా టైప్ చేసిన UPI ID ఉన్న చిత్రాన్ని క్యాప్చర్ చేయండి లేదా అప్‌లోడ్ చేయండి.</text>
+    <text id="camera-button-text">కెమెరాను ఉపయోగించండి</text>
+    <text id="capture-button-text">ఫోటో తీయండి</text>
+    <text id="upload-button-text">చిత్రాన్ని అప్‌లోడ్ చేయండి</text>
+    <text id="camera-ready-message">కెమెరాను QR కోడ్ / UPI ID వద్ద గురిపెట్టి క్యాప్చర్ చేయండి.</text>
+    <text id="camera-error-message">కెమెరాను యాక్సెస్ చేయలేకపోయాము. దయచేసి అనుమతులు మంజూరు చేయబడ్డాయని నిర్ధారించుకుని, మళ్లీ ప్రయత్నించండి.</text>
+    <text id="camera-not-ready-message">కెమెరా సిద్ధంగా లేదు. దయచేసి మళ్లీ ప్రయత్నించండి.</text>
+    <text id="processing-message">చిత్రం ప్రాసెస్ చేయబడుతోంది...</text>
+    <text id="scanning-qr-message">QR కోడ్ స్కాన్ చేయబడుతోంది...</text>
+    <text id="ocr-message">వచనాన్ని చదువుతోంది (OCR)...</text>
+    <text id="multiple-upi-message">వచనంలో బహుళ UPI IDలు కనుగొనబడ్డాయి. దయచేసి ఒకటి మాత్రమే కనిపించేలా చూసుకోండి.</text>
+    <text id="unknown-error-message">ప్రాసెసింగ్ సమయంలో తెలియని లోపం సంభవించింది.</text>
+    <text id="no-upi-detected-message">చిత్రంలో UPI QR కోడ్ లేదా టైప్ చేసిన UPI ID కనుగొనబడలేదు.</text>
+    <text id="check-upi-text">UPI IDని సరిచూడండి</text>
+    <text id="upi-mismatch-message">UPI ID సరిపోలడం లేదు:</text>
+    <text id="qr-code-label">QR కోడ్:</text>
+    <text id="text-label">వచనం:</text>
+    <text id="mismatch-explanation">QR కోడ్‌లోని UPI ID మరియు ముద్రించిన వచనం సరిపోలడం లేదు. దయచేసి వాటిని విడిగా తనిఖీ చేయడానికి ప్రయత్నించండి.</text>
+    <text id="verifying-upi-message">UPI ID ధృవీకరించబడుతోంది...</text>
+    <text id="verified-upi-message">ధృవీకరించబడిన UPI ID</text>
+    <text id="name-label">పేరు:</text>
+    <text id="reg-no-label">రిజి. నెం.:</text>
+    <text id="copy-upi-text">చెల్లింపు చేయడానికి UPIని కాపీ చేయండి</text>
+    <text id="scan-another-text">మరొకటి స్కాన్ చేయండి</text>
+    <text id="upi-not-found-message">UPI ID కనుగొనబడలేదు</text>
+    <text id="not-found-explanation">ఈ UPI ID ధృవీకరించబడిన జాబితాలో కనుగొనబడలేదు.</text>
+    <text id="copied-text">కాపీ చేయబడింది!</text>
+    <text id="status-message">స్థితి ఇక్కడ కనిపిస్తుంది. దయచేసి UPI QR కోడ్ మరియు/లేదా టైప్ చేసిన UPI ID ఉన్న చిత్రాన్ని క్యాప్చర్ చేయండి లేదా అప్‌లోడ్ చేయండి.</text>
+
+    <text id="account-check-title">ఖాతా వివరాల ధృవీకరణ</text>
+    <text id="reg-no-input-label">రిజిస్ట్రేషన్ నంబర్:</text>
+    <text id="ifsc-input-label">IFSC కోడ్:</text>
+    <text id="acc-no-input-label">ఖాతా నంబర్:</text>
+    <text id="check-account-button-text">ఖాతా వివరాలను సరిచూడండి</text>
+    <text id="initial-instruction">పైన ఉన్న మూడు వివరాలను నమోదు చేసి, "ఖాతా వివరాలను సరిచూడండి"పై క్లిక్ చేయండి.</text>
+    <text id="validation-error">దయచేసి మూడు వివరాలను నమోదు చేయండి: రిజిస్ట్రేషన్ నంబర్, IFSC కోడ్ మరియు ఖాతా నంబర్.</text>
+    <text id="verifying-message">ఖాతా వివరాలు ధృవీకరించబడుతున్నాయి...</text>
+    <text id="account-verified-message">ఖాతా వివరాలు ధృవీకరించబడ్డాయి</text>
+    <text id="name-label">పేరు:</text>
+    <text id="upi-id-label">UPI ID:</text>
+    <text id="copy-acc-text">ఖాతా నెం. కాపీ చేయండి</text>
+    <text id="copy-ifsc-text">IFSC కాపీ చేయండి</text>
+    <text id="no-match-message">సరిపోలలేదు</text>
+    <text id="no-match-explanation">అందించిన ఖాతా వివరాలు (రిజి. నెం., IFSC, ఖాతా నెం.) ఏ ధృవీకరించబడిన రికార్డులతో సరిపోలలేదు.</text>
+
+    <text id="manual-check-title">మాన్యువల్ UPI ID ధృవీకరణ</text>
+    <text id="upi-input-label">UPI IDని నమోదు చేయండి:</text>
+    <text id="check-upi-button-text">UPI IDని సరిచూడండి</text>
+    <text id="manual-initial-instruction">పైన ఒక UPI IDని నమోదు చేసి, "UPI IDని సరిచూడండి"పై క్లిక్ చేయండి.</text>
+    <text id="empty-upi-error">దయచేసి ఒక UPI IDని నమోదు చేయండి.</text>
+    <text id="invalid-format-error">చెల్లని UPI ID ఫార్మాట్. దయచేసి చెల్లుబాటు అయ్యే IDని నమోదు చేయండి (ఉదా., username@bankhandle).</text>
+  </language>
+
+  <language id="kn">
+    <text id="main-title">ಪರಿಶೀಲಿಸಿ</text>
+    <text id="section-title-1">ಪರಿಶೀಲಿಸಿದ UPI IDಯನ್ನು ಪರಿಶೀಲಿಸಿ</text>
+    <text id="photo-button">ಫೋಟೋ ಬಳಸಿ</text>
+    <text id="type-button">ಟೈಪ್ ಮಾಡಿ</text>
+    <text id="section-title-2">ಖಾತೆ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ</text>
+    <text id="account-check-button">ಸುರಕ್ಷಿತ NEFT/RTGS ವರ್ಗಾವಣೆಗಳಿಗಾಗಿ</text>
+    <text id="language-label">ಭಾಷೆ:</text>
+
+    <text id="initial-message">ದಯವಿಟ್ಟು UPI QR ಕೋಡ್ ಮತ್ತು/ಅಥವಾ ಟೈಪ್ ಮಾಡಿದ UPI ID ಹೊಂದಿರುವ ಚಿತ್ರವನ್ನು ಸೆರೆಹಿಡಿಯಿರಿ ಅಥವಾ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.</text>
+    <text id="camera-button-text">ಕ್ಯಾಮೆರಾ ಬಳಸಿ</text>
+    <text id="capture-button-text">ಚಿತ್ರವನ್ನು ಸೆರೆಹಿಡಿಯಿರಿ</text>
+    <text id="upload-button-text">ಚಿತ್ರವನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ</text>
+    <text id="camera-ready-message">ಕ್ಯಾಮೆರಾವನ್ನು QR ಕೋಡ್ / UPI ID ಕಡೆಗೆ ತೋರಿಸಿ ಮತ್ತು ಸೆರೆಹಿಡಿಯಿರಿ.</text>
+    <text id="camera-error-message">ಕ್ಯಾಮೆರಾವನ್ನು ಪ್ರವೇಶಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಅನುಮತಿಗಳನ್ನು ನೀಡಲಾಗಿದೆಯೆ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಂಡು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</text>
+    <text id="camera-not-ready-message">ಕ್ಯಾಮೆರಾ ಸಿದ್ಧವಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.</text>
+    <text id="processing-message">ಚಿತ್ರವನ್ನು ಪ್ರಕ್ರಿಯಿಸಲಾಗುತ್ತಿದೆ...</text>
+    <text id="scanning-qr-message">QR ಕೋಡ್ ಸ್ಕ್ಯಾನ್ ಮಾಡಲಾಗುತ್ತಿದೆ...</text>
+    <text id="ocr-message">ಪಠ್ಯವನ್ನು ಓದಲಾಗುತ್ತಿದೆ (OCR)...</text>
+    <text id="multiple-upi-message">ಪಠ್ಯದಲ್ಲಿ ಬಹು UPI IDಗಳು ಕಂಡುಬಂದಿವೆ. ದಯವಿಟ್ಟು ಕೇವಲ ಒಂದು ಮಾತ್ರ ಗೋಚರಿಸುವುದನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.</text>
+    <text id="unknown-error-message">ಪ್ರಕ್ರಿಯೆಯ ಸಮಯದಲ್ಲಿ ಅಪರಿಚಿತ ದೋಷ ಸಂಭವಿಸಿದೆ.</text>
+    <text id="no-upi-detected-message">ಚಿತ್ರದಲ್ಲಿ ಯಾವುದೇ UPI QR ಕೋಡ್ ಅಥವಾ ಟೈಪ್ ಮಾಡಿದ UPI ID ಪತ್ತೆಯಾಗಿಲ್ಲ.</text>
+    <text id="check-upi-text">UPI ID ಪರಿಶೀಲಿಸಿ</text>
+    <text id="upi-mismatch-message">UPI ID ಹೊಂದಾಣಿಕೆಯಾಗುತ್ತಿಲ್ಲ:</text>
+    <text id="qr-code-label">QR ಕೋಡ್:</text>
+    <text id="text-label">ಪಠ್ಯ:</text>
+    <text id="mismatch-explanation">QR ಕೋಡ್‌ನಲ್ಲಿರುವ UPI ID ಮತ್ತು ಮುದ್ರಿತ ಪಠ್ಯ ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ. ದಯವಿಟ್ಟು ಅವುಗಳನ್ನು ಪ್ರತ್ಯೇಕವಾಗಿ ಪರಿಶೀಲಿಸಲು ಪ್ರಯತ್ನಿಸಿ.</text>
+    <text id="verifying-upi-message">UPI ID ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ...</text>
+    <text id="verified-upi-message">ಪರಿಶೀಲಿಸಿದ UPI ID</text>
+    <text id="name-label">ಹೆಸರು:</text>
+    <text id="reg-no-label">ನೋಂದಣಿ ಸಂಖ್ಯೆ:</text>
+    <text id="copy-upi-text">ಪಾವತಿ ಮಾಡಲು UPI ನಕಲಿಸಿ</text>
+    <text id="scan-another-text">ಇನ್ನೊಂದನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಿ</text>
+    <text id="upi-not-found-message">UPI ID ಕಂಡುಬಂದಿಲ್ಲ</text>
+    <text id="not-found-explanation">ಈ UPI ID ಪರಿಶೀಲಿಸಿದ ಪಟ್ಟಿಯಲ್ಲಿ ಕಂಡುಬಂದಿಲ್ಲ.</text>
+    <text id="copied-text">ನಕಲಿಸಲಾಗಿದೆ!</text>
+    <text id="status-message">ಸ್ಥಿತಿ ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ. ದಯವಿಟ್ಟು UPI QR ಕೋಡ್ ಮತ್ತು/ಅಥವಾ ಟೈಪ್ ಮಾಡಿದ UPI ID ಹೊಂದಿರುವ ಚಿತ್ರವನ್ನು ಸೆರೆಹಿಡಿಯಿರಿ ಅಥವಾ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.</text>
+
+    <text id="account-check-title">ಖಾತೆ ವಿವರಗಳ ಪರಿಶೀಲನೆ</text>
+    <text id="reg-no-input-label">ನೋಂದಣಿ ಸಂಖ್ಯೆ:</text>
+    <text id="ifsc-input-label">IFSC ಕೋಡ್:</text>
+    <text id="acc-no-input-label">ಖಾತೆ ಸಂಖ್ಯೆ:</text>
+    <text id="check-account-button-text">ಖಾತೆ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ</text>
+    <text id="initial-instruction">ಮೇಲಿನ ಮೂರೂ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ ಮತ್ತು "ಖಾತೆ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಿ" ಕ್ಲಿಕ್ ಮಾಡಿ.</text>
+    <text id="validation-error">ದಯವಿಟ್ಟು ಮೂರೂ ವಿವರಗಳನ್ನು ನಮೂದಿಸಿ: ನೋಂದಣಿ ಸಂಖ್ಯೆ, IFSC ಕೋಡ್, ಮತ್ತು ಖಾತೆ ಸಂಖ್ಯೆ.</text>
+    <text id="verifying-message">ಖಾತೆ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ...</text>
+    <text id="account-verified-message">ಖಾತೆ ವಿವರಗಳನ್ನು ಪರಿಶೀಲಿಸಲಾಗಿದೆ</text>
+    <text id="name-label">ಹೆಸರು:</text>
+    <text id="upi-id-label">UPI ID:</text>
+    <text id="copy-acc-text">ಖಾತೆ ಸಂಖ್ಯೆ ನಕಲಿಸಿ</text>
+    <text id="copy-ifsc-text">IFSC ನಕಲಿಸಿ</text>
+    <text id="no-match-message">ಹೊಂದಾಣಿಕೆ ಕಂಡುಬಂದಿಲ್ಲ</text>
+    <text id="no-match-explanation">ಒದಗಿಸಿದ ಖಾತೆ ವಿವರಗಳು (ನೋಂದಣಿ ಸಂಖ್ಯೆ, IFSC, ಖಾತೆ ಸಂಖ್ಯೆ) ಯಾವುದೇ ಪರಿಶೀಲಿಸಿದ ದಾಖಲೆಗಳೊಂದಿಗೆ ಹೊಂದಿಕೆಯಾಗಲಿಲ್ಲ.</text>
+
+    <text id="manual-check-title">ಹಸ್ತಚಾಲಿತ UPI ID ಪರಿಶೀಲನೆ</text>
+    <text id="upi-input-label">UPI ID ನಮೂದಿಸಿ:</text>
+    <text id="check-upi-button-text">UPI ID ಪರಿಶೀಲಿಸಿ</text>
+    <text id="manual-initial-instruction">ಮೇಲೆ UPI ID ನಮೂದಿಸಿ ಮತ್ತು "UPI ID ಪರಿಶೀಲಿಸಿ" ಕ್ಲಿಕ್ ಮಾಡಿ.</text>
+    <text id="empty-upi-error">ದಯವಿಟ್ಟು UPI ID ನಮೂದಿಸಿ.</text>
+    <text id="invalid-format-error">ಅಮಾನ್ಯ UPI ID ಫಾರ್ಮ್ಯಾಟ್. ದಯವಿಟ್ಟು ಮಾನ್ಯ ID ನಮೂದಿಸಿ (ಉದಾ., username@bankhandle).</text>
+  </language>
+</translations>

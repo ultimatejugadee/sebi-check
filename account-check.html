@@ -349,43 +349,43 @@
             <i class="fas fa-arrow-left"></i>
         </button>
         <div id="language-display" class="language-display" onclick="changeLanguage()">
-            Language: <span id="current-language">Loading...</span>
+            <span id="language-label">Language:</span> <span id="current-language">Loading...</span>
         </div>
     </header>
 
     <main>
         <img src="https://dur682txgv28e.cloudfront.net/assets/images/sebi-logo-crop.png" alt="SEBI Logo"
             class="main-logo">
-        <h2 class="main-title">Account Details Verification</h2>
+        <h2 class="main-title" id="account-check-title">Account Details Verification</h2>
 
         <div class="content">
             <div class="account-input-container">
                 <div class="input-group">
-                    <label for="regNoInput" class="input-label">Registration Number:</label>
+                    <label for="regNoInput" class="input-label" id="reg-no-input-label">Registration Number:</label>
                     <input type="text" id="regNoInput" class="input-field" placeholder="Enter Registration No.">
                 </div>
                 <div class="input-group">
-                    <label for="ifscInput" class="input-label">IFSC Code:</label>
+                    <label for="ifscInput" class="input-label" id="ifsc-input-label">IFSC Code:</label>
                     <input type="text" id="ifscInput" class="input-field" placeholder="Enter IFSC Code">
                 </div>
                 <div class="input-group">
-                    <label for="accNoInput" class="input-label">Account Number:</label>
+                    <label for="accNoInput" class="input-label" id="acc-no-input-label">Account Number:</label>
                     <input type="text" id="accNoInput" class="input-field" placeholder="Enter Account No.">
                 </div>
 
                 <button class="check-button" id="checkAccountButton">
-                    <i class="fas fa-user-check"></i> Check Account Details
+                    <i class="fas fa-user-check"></i> <span id="check-account-button-text">Check Account Details</span>
                 </button>
             </div>
 
             <div id="result">
-                <p class="result-message">Enter all three details above and click "Check Account Details".</p>
+                <p class="result-message" id="initial-instruction">Enter all three details above and click "Check Account Details".</p>
             </div>
         </div>
     </main>
 
     <script>
-        // --- DOM Elements ---
+        // --- DOM Elements --- 
         const regNoInput = document.getElementById('regNoInput');
         const ifscInput = document.getElementById('ifscInput');
         const accNoInput = document.getElementById('accNoInput');
@@ -406,13 +406,13 @@
 
             // Validation: Check if all fields are filled
             if (!regNo || !ifsc || !accNo) {
-                resultDiv.innerHTML = '<p class="error-message">Please enter all three details: Registration Number, IFSC Code, and Account Number.</p>';
+                resultDiv.innerHTML = `<p class="error-message" id="validation-error">${getTranslatedText('validation-error', 'Please enter all three details: Registration Number, IFSC Code, and Account Number.')}</p>`;
                 return;
             }
 
             // Disable button and show spinner
             checkAccountButton.disabled = true;
-            resultDiv.innerHTML = '<div class="spinner"></div><p class="result-message">Verifying account details...</p>';
+            resultDiv.innerHTML = `<div class="spinner"></div><p class="result-message" id="verifying-message">${getTranslatedText('verifying-message', 'Verifying account details...')}</p>`;
 
             verifyAccountDetails(regNo, ifsc, accNo);
         }
@@ -422,7 +422,7 @@
             try {
                 const response = await fetch('account_db.xml'); // Assuming XML is in the same directory
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch database: ${response.statusText}`);
+                    throw new Error(`${getTranslatedText('fetch-error', 'Failed to fetch database')}: ${response.statusText}`);
                 }
                 const xmlText = await response.text();
                 const parser = new DOMParser();
@@ -431,7 +431,7 @@
                 const parserError = xmlDoc.querySelector("parsererror");
                 if (parserError) {
                     console.error('Error parsing XML:', parserError);
-                    throw new Error('Error reading the verification database.');
+                    throw new Error(getTranslatedText('parsing-error', 'Error reading the verification database.'));
                 }
 
                 const entities = xmlDoc.getElementsByTagName('Entity');
@@ -464,7 +464,7 @@
 
             } catch (error) {
                 console.error('Error verifying account details:', error);
-                resultDiv.innerHTML = `<p class="error-message">Error verifying account details: ${error.message}. Please try again.</p>`;
+                resultDiv.innerHTML = `<p class="error-message">${getTranslatedText('verification-error', 'Error verifying account details')}: ${error.message}. ${getTranslatedText('try-again', 'Please try again.')}</p>`;
             } finally {
                 // Re-enable the button
                 checkAccountButton.disabled = false;
@@ -478,24 +478,24 @@
                 // Verified - Match Found
                 resultDiv.classList.add('verified');
                 resultDiv.innerHTML = `
-                     <p class="success-message"><i class="fas fa-check-circle"></i> Account Details Verified</p>
-                     <p><span class="detail-label">Name:</span> <span class="detail-value">${entityData.name}</span></p>
-                     <p><span class="detail-label">UPI ID:</span> <span class="detail-value">${entityData.upiId}</span></p>
+                     <p class="success-message"><i class="fas fa-check-circle"></i> <span id="account-verified-message">${getTranslatedText('account-verified-message', 'Account Details Verified')}</span></p>
+                     <p><span class="detail-label" id="name-label">${getTranslatedText('name-label', 'Name:')}</span> <span class="detail-value">${entityData.name}</span></p>
+                     <p><span class="detail-label" id="upi-id-label">${getTranslatedText('upi-id-label', 'UPI ID:')}</span> <span class="detail-value">${entityData.upiId}</span></p>
                      <div class="copy-button-group">
-                         <button class="copy-button" id="copyAccButton"><i class="fas fa-copy"></i> Copy Account No.</button>
-                         <button class="copy-button" id="copyIfscButton"><i class="fas fa-copy"></i> Copy IFSC</button>
+                         <button class="copy-button" id="copyAccButton"><i class="fas fa-copy"></i> <span id="copy-acc-text">${getTranslatedText('copy-acc-text', 'Copy Account No.')}</span></button>
+                         <button class="copy-button" id="copyIfscButton"><i class="fas fa-copy"></i> <span id="copy-ifsc-text">${getTranslatedText('copy-ifsc-text', 'Copy IFSC')}</span></button>
                      </div>
                  `;
                 // Add event listeners to the new copy buttons
-                document.getElementById('copyAccButton').addEventListener('click', () => copyToClipboard(entityData.accountNo, 'Account No.'));
+                document.getElementById('copyAccButton').addEventListener('click', () => copyToClipboard(entityData.accountNo, getTranslatedText('account-no-label', 'Account No.')));
                 document.getElementById('copyIfscButton').addEventListener('click', () => copyToClipboard(entityData.ifsc, 'IFSC'));
 
             } else {
                 // Not found in database
                 resultDiv.classList.remove('verified');
                 resultDiv.innerHTML = `
-                     <p class="error-message"><i class="fas fa-times-circle"></i> No Match Found</p>
-                     <p>The provided account details (Registration No., IFSC, Account No.) did not match any verified records.</p>
+                     <p class="error-message"><i class="fas fa-times-circle"></i> <span id="no-match-message">${getTranslatedText('no-match-message', 'No Match Found')}</span></p>
+                     <p id="no-match-explanation">${getTranslatedText('no-match-explanation', 'The provided account details (Registration No., IFSC, Account No.) did not match any verified records.')}</p>
                  `;
             }
         }
@@ -505,19 +505,23 @@
             navigator.clipboard.writeText(text)
                 .then(() => {
                     // Provide feedback (could be more sophisticated, e.g., changing button text briefly)
-                    alert(`${type} copied to clipboard!`);
+                    alert(`${type} ${getTranslatedText('copied-text', 'copied to clipboard!')}`);
                     console.log(`${type} copied: ${text}`);
                 })
                 .catch(err => {
                     console.error(`Error copying ${type}:`, err);
-                    alert(`Failed to copy ${type}.`);
+                    alert(`${getTranslatedText('copy-failed', 'Failed to copy')} ${type}.`);
                 });
         }
 
-        // --- Language Functions (Copied) ---
+        // --- Language Functions ---
         document.addEventListener('DOMContentLoaded', function () {
             updateLanguageDisplay();
             regNoInput.focus(); // Focus first input field on load
+            
+            // Load translations
+            const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+            loadTranslations(preferredLanguage);
         });
 
         function updateLanguageDisplay() {
@@ -568,6 +572,8 @@
             window.location.href = 'lang_select.html'; // Assuming this page exists
         }
     </script>
+    <!-- Add translations script -->
+    <script src="translations.js"></script>
 </body>
 
 </html>

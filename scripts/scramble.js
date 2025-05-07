@@ -41,7 +41,7 @@ class TextScramble {
     
     // Play sound with shorter duration
     oscillator.start();
-    oscillator.stop(this.audioCtx.currentTime + 0.015); // Reduced from 0.05 to 0.015
+    oscillator.stop(this.audioCtx.currentTime + 0.05); // Reduced from 0.05 to 0.015
     
     this.lastSoundTime = now;
   }
