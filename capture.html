@@ -162,8 +162,8 @@
         }
 
         #videoElement {
-            width: 50%;
-            max-width: 240px;
+            width: 80%;
+            max-width: 480px;
             margin: 0 auto 1rem auto;
             display: none;
             border-radius: 8px;
@@ -252,6 +252,84 @@
             background-color: #d0dfff;
         }
 
+        .category-alert {
+            background-color: var(--success-color);
+            color: var(--white);
+            padding: 0.8rem 1.2rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .category-alert:hover {
+            background-color: #218838;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-close:hover {
+            background-color: var(--light-blue);
+            color: var(--primary-color);
+        }
+
+        .popup-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding-right: 2rem;
+        }
+
+        .popup-message {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
         .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             width: 36px;
@@ -318,6 +396,11 @@
                    top: 1rem;
                    transform: none;
                }
+               
+               #videoElement {
+                   width: 95%;
+                   max-width: 350px;
+               }
                /* CHANGE 1: Removed .main-title media query */
         }
 
@@ -338,7 +421,7 @@
         <div class="content">
 
             <div id="result">
-                <p id="initial-message" class="result-message">Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.</p>
+                <p id="initial-message" class="result-message">Point your camera at a UPI QR code for automatic scanning, or capture/upload an image with typed UPI ID.</p>
             </div>
 
             <div class="capture-container">
@@ -351,7 +434,7 @@
                          <span id="camera-button-text">Use Camera</span>
                      </label>
                      <button class="result-button" id="captureImageButton" style="display: none;">
-                          <i class="fas fa-camera"></i> <span id="capture-button-text">Capture Image</span>
+                          <i class="fas fa-camera"></i> <span id="capture-button-text">Capture for Text Recognition</span>
                        </button>
                      <label class="action-button" for="fileInput" id="uploadButtonLabel">
                          <i class="fas fa-upload"></i>
@@ -363,6 +446,17 @@
 
         </div>
     </main>
+
+    <!-- Category Info Popup -->
+    <div id="categoryPopup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closeCategoryPopup()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="popup-title" id="popupTitle"></h3>
+            <div class="popup-message" id="popupMessage"></div>
+        </div>
+    </div>
 
     <script>
         // --- DOM Elements ---
@@ -377,6 +471,8 @@
 
         let stream = null;
         let currentUPI = null;
+        let isScanning = false;
+        let scanningAnimationId = null;
 
         // --- Event Listeners ---
         startCameraButton.addEventListener('click', startCamera);
@@ -387,14 +483,24 @@
         async function startCamera() {
             resetUIBeforeAction();
             try {
-                stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+                // Request higher resolution for better QR code detection
+                stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: 'environment',
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    } 
+                });
                 videoElement.srcObject = stream;
                 videoElement.style.display = 'block';
                 imagePreview.style.display = 'none';
                 startCameraButton.style.display = 'none';
                 uploadButtonLabel.style.display = 'none';
                 captureImageButton.style.display = 'flex';
-                resultDiv.innerHTML = `<p id="camera-ready-message" class="result-message">${getTranslatedText('camera-ready-message', 'Point camera at the QR code / UPI ID and capture.')}</p>`;
+                resultDiv.innerHTML = `<p id="camera-ready-message" class="result-message">${getTranslatedText('camera-ready-message', 'Point camera at the QR code. Scanning automatically...')}</p>`;
+                
+                // Start continuous QR scanning
+                videoElement.addEventListener('loadedmetadata', startContinuousScanning);
             } catch (err) {
                 console.error('Error accessing camera:', err);
                 resultDiv.innerHTML = `<p id="camera-error-message" class="error-message">${getTranslatedText('camera-error-message', 'Could not access camera. Please ensure permissions are granted and try again.')}</p>`;
@@ -409,13 +515,18 @@
                  showInitialButtons();
                  return;
                }
+            
+            // Stop continuous scanning
+            stopContinuousScanning();
+            
             const canvas = document.createElement('canvas');
-            canvas.width = videoElement.videoWidth;
-            canvas.height = videoElement.videoHeight;
+            // Use actual video dimensions for better quality
+            canvas.width = videoElement.videoWidth || 1280;
+            canvas.height = videoElement.videoHeight || 720;
             canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
             stopCamera();
 
-            const imageDataUrl = canvas.toDataURL('image/png');
+            const imageDataUrl = canvas.toDataURL('image/jpeg', 0.95); // Higher quality JPEG
             imagePreview.src = imageDataUrl;
             imagePreview.style.display = 'block';
             videoElement.style.display = 'none';
@@ -427,12 +538,76 @@
         }
 
         function stopCamera() {
+            stopContinuousScanning();
             if (stream) {
                 stream.getTracks().forEach(track => track.stop());
                 stream = null;
                 videoElement.srcObject = null;
             }
             videoElement.style.display = 'none';
+        }
+
+        // --- Continuous QR Scanning Functions ---
+        function startContinuousScanning() {
+            if (isScanning) return;
+            isScanning = true;
+            scanForQRCode();
+        }
+
+        function stopContinuousScanning() {
+            isScanning = false;
+            if (scanningAnimationId) {
+                cancelAnimationFrame(scanningAnimationId);
+                scanningAnimationId = null;
+            }
+        }
+
+        function scanForQRCode() {
+            if (!isScanning || !videoElement || videoElement.readyState !== videoElement.HAVE_ENOUGH_DATA) {
+                if (isScanning) {
+                    scanningAnimationId = requestAnimationFrame(scanForQRCode);
+                }
+                return;
+            }
+
+            try {
+                const canvas = document.createElement('canvas');
+                canvas.width = videoElement.videoWidth || 1280;
+                canvas.height = videoElement.videoHeight || 720;
+                const context = canvas.getContext('2d');
+                context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+
+                const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                const code = jsQR(imageData.data, imageData.width, imageData.height, {
+                    inversionAttempts: "dontInvert",
+                });
+
+                if (code) {
+                    const qrUpiId = extractUPIFromQRData(code.data);
+                    if (qrUpiId) {
+                        // QR code with UPI found, process it
+                        stopContinuousScanning();
+                        currentUPI = qrUpiId;
+                        stopCamera();
+                        
+                        resultDiv.innerHTML = `
+                            <p class="success-message"><i class="fas fa-qrcode"></i> QR Code Detected!</p>
+                            <p class="upi-id-display">${currentUPI}</p>
+                            <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> <span id="check-upi-text">${getTranslatedText('check-upi-text', 'Check UPI ID')}</span></button>
+                        `;
+                        document.getElementById('checkUpiButton').addEventListener('click', () => verifyUPIWithDatabase(currentUPI));
+                        initialButtonsDiv.style.display = 'none';
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.error('Error during continuous scanning:', err);
+            }
+
+            // Continue scanning
+            if (isScanning) {
+                scanningAnimationId = requestAnimationFrame(scanForQRCode);
+            }
         }
 
         // --- File Upload Function ---
@@ -452,6 +627,7 @@
                     const img = new Image();
                     img.onload = () => {
                          const canvas = document.createElement('canvas');
+                         // Use original image dimensions for better quality
                          canvas.width = img.naturalWidth;
                          canvas.height = img.naturalHeight;
                          canvas.getContext('2d').drawImage(img, 0, 0);
@@ -620,7 +796,13 @@
                       if (dbUpiIdElement && dbUpiIdElement.textContent.toLowerCase() === upiIdToCheck.toLowerCase()) {
                           const entityName = entity.getElementsByTagName('entity_name')[0]?.textContent || 'N/A';
                           const registrationNo = entity.getElementsByTagName('registration_no')[0]?.textContent || 'N/A';
-                          foundEntity = { name: entityName, regNo: registrationNo };
+                          
+                          // Extract category from UPI ID (e.g., "zerodha.brk@validhdfc" -> "brk")
+                          const upiId = dbUpiIdElement.textContent;
+                          const upiParts = upiId.split('@')[0].split('.');
+                          const category = upiParts.length > 1 ? upiParts[upiParts.length - 1] : null;
+                          
+                          foundEntity = { name: entityName, regNo: registrationNo, category: category };
                           break;
                       }
                  }
@@ -638,14 +820,32 @@
              resultDiv.innerHTML = '';
              if (entityData) {
                  resultDiv.classList.add('verified');
-                 resultDiv.innerHTML = `
+                 
+                 // Get current language for category alert
+                 const currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+                 
+                 // Build the HTML content
+                 let htmlContent = `
                      <p class="success-message"><i class="fas fa-check-circle"></i> <span id="verified-upi-message">${getTranslatedText('verified-upi-message', 'Verified UPI ID')}</span></p>
                      <p class="upi-id-display">${verifiedUpiId}</p>
                      <p class="entity-details"><span id="name-label">${getTranslatedText('name-label', 'Name:')}</span> ${entityData.name}</p>
                      <p class="entity-details"><span id="reg-no-label">${getTranslatedText('reg-no-label', 'Reg. No:')}</span> ${entityData.regNo}</p>
+                 `;
+                 
+                 // Add category alert if category exists
+                 if (entityData.category) {
+                     const categoryInfo = getCategoryAlert(entityData.category, currentLanguage);
+                     if (categoryInfo) {
+                         htmlContent += `<div class="category-alert" onclick="showCategoryPopup('${entityData.category}', '${currentLanguage}')">${categoryInfo.alert}</div>`;
+                     }
+                 }
+                 
+                 htmlContent += `
                      <button class="result-button" id="copyUpiButton"><i class="fas fa-copy"></i> <span id="copy-upi-text">${getTranslatedText('copy-upi-text', 'Copy UPI to Make Payment')}</span></button>
                      <button class="result-button" id="tryAgainButton"><i class="fas fa-redo"></i> <span id="scan-another-text">${getTranslatedText('scan-another-text', 'Scan Another')}</span></button>
                  `;
+                 
+                 resultDiv.innerHTML = htmlContent;
                  document.getElementById('copyUpiButton').addEventListener('click', () => copyToClipboard(verifiedUpiId));
                  document.getElementById('tryAgainButton').addEventListener('click', resetUI);
                  initialButtonsDiv.style.display = 'none';
@@ -682,6 +882,7 @@
 
         // --- UI Reset/Control Functions ---
         function resetUIBeforeAction() {
+             stopContinuousScanning();
              stopCamera();
              imagePreview.style.display = 'none';
              imagePreview.src = '#';
@@ -693,7 +894,7 @@
 
         function resetUI() {
               resetUIBeforeAction();
-              resultDiv.innerHTML = `<p id="status-message" class="result-message">${getTranslatedText('status-message', 'Status will appear here. Please capture or upload an image containing a UPI QR code and/or a typed UPI ID.')}</p>`;
+              resultDiv.innerHTML = `<p id="status-message" class="result-message">${getTranslatedText('status-message', 'Point your camera at a UPI QR code for automatic scanning, or capture/upload an image with typed UPI ID.')}</p>`;
               showInitialButtons();
           }
 
@@ -712,8 +913,9 @@
             // Get the preferred language
             const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
             
-            // Load translations
+            // Load translations and categories
             loadTranslations(preferredLanguage);
+            loadCategories();
         });
 
         function updateLanguageDisplay() {
@@ -763,6 +965,68 @@
         function changeLanguage() {
             window.location.href = 'lang_select.html';
         }
+
+        // Category management functions
+        let categoriesData = null;
+
+        async function loadCategories() {
+            try {
+                const response = await fetch('catory_list.xml');
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                
+                categoriesData = {};
+                const languages = xmlDoc.querySelectorAll('language');
+                
+                languages.forEach(language => {
+                    const langId = language.getAttribute('id');
+                    categoriesData[langId] = {};
+                    
+                    const categories = language.querySelectorAll('category');
+                    categories.forEach(category => {
+                        const type = category.querySelector('type').textContent;
+                        const alert = category.querySelector('alert').textContent;
+                        const message = category.querySelector('message').textContent;
+                        
+                        categoriesData[langId][type] = {
+                            alert: alert,
+                            message: message
+                        };
+                    });
+                });
+            } catch (error) {
+                console.error('Error loading categories:', error);
+            }
+        }
+
+        function getCategoryAlert(categoryType, language = 'en') {
+            if (!categoriesData || !categoriesData[language] || !categoriesData[language][categoryType]) {
+                return null;
+            }
+            return categoriesData[language][categoryType];
+        }
+
+        function showCategoryPopup(categoryType, language = 'en') {
+            const categoryInfo = getCategoryAlert(categoryType, language);
+            if (!categoryInfo) return;
+            
+            document.getElementById('popupTitle').textContent = categoryInfo.alert;
+            document.getElementById('popupMessage').textContent = categoryInfo.message;
+            document.getElementById('categoryPopup').style.display = 'flex';
+        }
+
+        function closeCategoryPopup() {
+            document.getElementById('categoryPopup').style.display = 'none';
+        }
+
+        // Close popup when clicking outside
+        document.addEventListener('click', function(event) {
+            const popup = document.getElementById('categoryPopup');
+            if (event.target === popup) {
+                closeCategoryPopup();
+            }
+        });
     </script>
     <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>

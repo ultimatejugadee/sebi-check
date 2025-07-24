@@ -232,6 +232,84 @@
             background-color: #d0dfff;
         }
 
+        .category-alert {
+            background-color: var(--success-color);
+            color: var(--white);
+            padding: 0.8rem 1.2rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .category-alert:hover {
+            background-color: #218838;
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-close:hover {
+            background-color: var(--light-blue);
+            color: var(--primary-color);
+        }
+
+        .popup-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            padding-right: 2rem;
+        }
+
+        .popup-message {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
         .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             width: 36px;
@@ -326,6 +404,17 @@
         </div>
     </main>
 
+    <!-- Category Info Popup -->
+    <div id="categoryPopup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closeCategoryPopup()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="popup-title" id="popupTitle"></h3>
+            <div class="popup-message" id="popupMessage"></div>
+        </div>
+    </div>
+
     <script>
         // --- DOM Elements ---
         const upiInput = document.getElementById('upiInput');
@@ -393,7 +482,13 @@
                      if (dbUpiIdElement && dbUpiIdElement.textContent.toLowerCase() === upiIdToCheck.toLowerCase()) {
                          const entityName = entity.getElementsByTagName('entity_name')[0]?.textContent || 'N/A';
                          const registrationNo = entity.getElementsByTagName('registration_no')[0]?.textContent || 'N/A';
-                         foundEntity = { name: entityName, regNo: registrationNo };
+                         
+                         // Extract category from UPI ID (e.g., "zerodha.brk@validhdfc" -> "brk")
+                         const upiId = dbUpiIdElement.textContent;
+                         const upiParts = upiId.split('@')[0].split('.');
+                         const category = upiParts.length > 1 ? upiParts[upiParts.length - 1] : null;
+                         
+                         foundEntity = { name: entityName, regNo: registrationNo, category: category };
                          break;
                      }
                  }
@@ -415,13 +510,31 @@
              if (entityData) {
                  // Verified
                  resultDiv.classList.add('verified');
-                 resultDiv.innerHTML = `
+                 
+                 // Get current language for category alert
+                 const currentLanguage = localStorage.getItem('preferredLanguage') || 'en';
+                 
+                 // Build the HTML content
+                 let htmlContent = `
                      <p class="success-message"><i class="fas fa-check-circle"></i> <span id="verified-upi-message">${getTranslatedText('verified-upi-message', 'Verified UPI ID')}</span></p>
                      <p class="upi-id-display">${verifiedUpiId}</p>
                      <p class="entity-details"><span id="name-label">${getTranslatedText('name-label', 'Name:')}</span> ${entityData.name}</p>
                      <p class="entity-details"><span id="reg-no-label">${getTranslatedText('reg-no-label', 'Reg. No:')}</span> ${entityData.regNo}</p>
+                 `;
+                 
+                 // Add category alert if category exists
+                 if (entityData.category) {
+                     const categoryInfo = getCategoryAlert(entityData.category, currentLanguage);
+                     if (categoryInfo) {
+                         htmlContent += `<div class="category-alert" onclick="showCategoryPopup('${entityData.category}', '${currentLanguage}')">${categoryInfo.alert}</div>`;
+                     }
+                 }
+                 
+                 htmlContent += `
                      <button class="result-button" id="copyUpiButton"><i class="fas fa-copy"></i> <span id="copy-upi-text">${getTranslatedText('copy-upi-text', 'Copy UPI to Make Payment')}</span></button>
                  `;
+                 
+                 resultDiv.innerHTML = htmlContent;
                  // Add event listener to the newly created button
                  document.getElementById('copyUpiButton').addEventListener('click', () => copyToClipboard(verifiedUpiId));
              } else {
@@ -461,9 +574,10 @@
             // Set initial focus to the input field for convenience
             upiInput.focus();
             
-            // Load translations
+            // Load translations and categories
             const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
             loadTranslations(preferredLanguage);
+            loadCategories();
         });
 
         function updateLanguageDisplay() {
@@ -513,6 +627,68 @@
         function changeLanguage() {
             window.location.href = 'lang_select.html'; // Assuming this page exists
         }
+
+        // Category management functions
+        let categoriesData = null;
+
+        async function loadCategories() {
+            try {
+                const response = await fetch('catory_list.xml');
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                
+                categoriesData = {};
+                const languages = xmlDoc.querySelectorAll('language');
+                
+                languages.forEach(language => {
+                    const langId = language.getAttribute('id');
+                    categoriesData[langId] = {};
+                    
+                    const categories = language.querySelectorAll('category');
+                    categories.forEach(category => {
+                        const type = category.querySelector('type').textContent;
+                        const alert = category.querySelector('alert').textContent;
+                        const message = category.querySelector('message').textContent;
+                        
+                        categoriesData[langId][type] = {
+                            alert: alert,
+                            message: message
+                        };
+                    });
+                });
+            } catch (error) {
+                console.error('Error loading categories:', error);
+            }
+        }
+
+        function getCategoryAlert(categoryType, language = 'en') {
+            if (!categoriesData || !categoriesData[language] || !categoriesData[language][categoryType]) {
+                return null;
+            }
+            return categoriesData[language][categoryType];
+        }
+
+        function showCategoryPopup(categoryType, language = 'en') {
+            const categoryInfo = getCategoryAlert(categoryType, language);
+            if (!categoryInfo) return;
+            
+            document.getElementById('popupTitle').textContent = categoryInfo.alert;
+            document.getElementById('popupMessage').textContent = categoryInfo.message;
+            document.getElementById('categoryPopup').style.display = 'flex';
+        }
+
+        function closeCategoryPopup() {
+            document.getElementById('categoryPopup').style.display = 'none';
+        }
+
+        // Close popup when clicking outside
+        document.addEventListener('click', function(event) {
+            const popup = document.getElementById('categoryPopup');
+            if (event.target === popup) {
+                closeCategoryPopup();
+            }
+        });
     </script>
     <!-- Add translations script -->
     <script src="translations.js"></script>

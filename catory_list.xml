@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<categories xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <language id="en">
+    <category>
+        <type>brk</type>
+        <alert>Stock Broker</alert>
+        <message>This entity is a registered Stock Broker with SEBI. Stock brokers are authorized to trade in securities on behalf of clients. They must comply with SEBI regulations and maintain proper licenses to operate.</message>
+    </category>
+    <category>
+        <type>bti</type>
+        <alert>Banker to an Issue (IPO)</alert>
+        <message>This entity is registered as a Banker to an Issue with SEBI. They are authorized to handle IPO processes and act as intermediaries between companies issuing securities and the public investors.</message>
+    </category>
+    <category>
+        <type>dp</type>
+        <alert>Depository Participant</alert>
+        <message>This entity is a registered Depository Participant with SEBI. They provide depository services and maintain investor securities in electronic form. They are authorized to open and maintain demat accounts.</message>
+    </category>
+    <category>
+        <type>ra</type>
+        <alert>Research Analyst</alert>
+        <message>This entity is a registered Research Analyst with SEBI. They are authorized to conduct research on securities and provide investment recommendations to clients based on their analysis.</message>
+    </category>
+    <category>
+        <type>ia</type>
+        <alert>Investment Adviser</alert>
+        <message>This entity is a registered Investment Adviser with SEBI. They are authorized to provide investment advice and portfolio management services to clients in accordance with SEBI regulations.</message>
+    </category>
+    <category>
+        <type>invit</type>
+        <alert>Infrastructure Investment Trust</alert>
+        <message>This entity is a registered Infrastructure Investment Trust with SEBI. InvITs are investment vehicles that pool money from investors to invest in infrastructure assets and provide regular income distribution.</message>
+    </category>
+    <category>
+        <type>mf</type>
+        <alert>Mutual Fund</alert>
+        <message>This entity is a registered Mutual Fund with SEBI. Mutual funds pool money from multiple investors to invest in a diversified portfolio of securities, managed by professional fund managers.</message>
+    </category>
+    <category>
+        <type>pms</type>
+        <alert>Portfolio Manager</alert>
+        <message>This entity is a registered Portfolio Manager with SEBI. They provide discretionary portfolio management services and manage client investments according to agreed investment objectives and risk profiles.</message>
+    </category>
+    <category>
+        <type>sreit</type>
+        <alert>SM Real Estate Investment Trust</alert>
+        <message>This entity is a registered Small and Medium Real Estate Investment Trust with SEBI. SM REITs invest in real estate assets and provide investors with regular income from rental yields and capital appreciation.</message>
+    </category>
+    <category>
+        <type>reit</type>
+        <alert>Real Estate Investment Trust</alert>
+        <message>This entity is a registered Real Estate Investment Trust with SEBI. REITs invest in income-generating real estate properties and distribute rental income to investors as dividends.</message>
+    </category>
+    <category>
+        <type>cc</type>
+        <alert>Clearing Corporation</alert>
+        <message>This entity is a registered Clearing Corporation with SEBI. They provide clearing and settlement services for securities transactions, ensuring efficient and secure settlement of trades in the capital markets.</message>
+    </category>
+    <category>
+        <type>ex</type>
+        <alert>Exchange</alert>
+        <message>This entity is a registered Exchange with SEBI. Stock exchanges provide a platform for trading securities and ensure fair, transparent, and efficient price discovery mechanisms for investors.</message>
+    </category>
+    <category>
+        <type>dep</type>
+        <alert>Depository</alert>
+        <message>This entity is a registered Depository with SEBI. Depositories maintain securities in electronic form and facilitate electronic settlement of trades, providing safe custody and transfer of securities.</message>
+    </category>
+  </language>
+</categories>
