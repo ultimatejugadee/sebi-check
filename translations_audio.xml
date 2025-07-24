@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<translations>
+  <language id="en">
+    <!-- Index page translations -->
+    <text id="main-title">001.wav<no_highlight></no_highlight></text>
+    <text id="photo-button-parent">002.wav</text>
+    <text id="type-button-parent">003.wav</text>
+    <text id="account-check-button-parent">004.wav</text>
+  </language>
+  
+  <language id="hi">
+    <!-- Index page translations for Hindi -->
+    <text id="main-title">001.wav<no_highlight></no_highlight></text>
+    <text id="photo-button-parent">002.wav</text>
+    <text id="type-button-parent">003.wav</text>
+    <text id="account-check-button-parent">004.wav</text>
+  </language>
+
+</translations>
