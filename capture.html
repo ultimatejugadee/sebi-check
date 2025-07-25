@@ -117,6 +117,11 @@
               font-weight: bold;
           }
 
+         .qr-detected-message { /* For QR Code Detected message - black color */
+              color: black;
+              font-weight: bold;
+          }
+
          .upi-id-display { /* Specific style for UPI ID display */
              font-family: monospace;
              font-size: 1.2rem;
@@ -591,7 +596,7 @@
                         stopCamera();
                         
                         resultDiv.innerHTML = `
-                            <p class="success-message"><i class="fas fa-qrcode"></i> QR Code Detected!</p>
+                            <p class="qr-detected-message"><i class="fas fa-qrcode"></i> QR Code Detected!</p>
                             <p class="upi-id-display">${currentUPI}</p>
                             <button class="result-button" id="checkUpiButton"><i class="fas fa-check-circle"></i> <span id="check-upi-text">${getTranslatedText('check-upi-text', 'Check UPI ID')}</span></button>
                         `;
